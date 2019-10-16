@@ -30,18 +30,17 @@ export default class ItemDetail extends Component {
   };
 
   handleUpdateItem = (item_id) => {
-    // if item doesn't exit, early exit
-    if (!this.context.getItem(item_id)) {
+    // if item doesn't exit, or if not authorized, early exit
+    if (!this.context.getItem(item_id) || !this.context.hasAuthToken()) {
       return;
     }
 
     ItemsApiService.updateItemRequest(item_id, {
       quantity: this.state.local_quantity,
       max_quantity: this.state.local_max_quantity,
-    })
-      .catch((error) => {
-        this.context.setError(error);
-      });
+    }).catch((error) => {
+      this.context.setError(error);
+    });
   };
 
   handleDeleteItem = (item_id) => {
