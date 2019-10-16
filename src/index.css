@@ -1,0 +1,32 @@
+/**********************************
+  Override global box-sizing
+***********************************/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.progress {
+  min-height: 32px;
+}
+
+.progress-bar {
+  text-shadow: black 1px 1px;
+  font-size: 1.4em;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.Item {
+  list-style: none;
+}
+
+.Item__container {
+  margin: 16px auto;
+}
