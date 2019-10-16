@@ -30,7 +30,10 @@ export default class ItemDetail extends Component {
   };
 
   handleUpdateItem = (item_id) => {
-    // if-statement here to check context if item exists
+    // if item doesn't exit, early exit
+    if (!this.context.getItem(item_id)) {
+      return;
+    }
 
     ItemsApiService.updateItemRequest(item_id, {
       quantity: this.state.local_quantity,
