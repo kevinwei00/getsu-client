@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TokenService from './services/token-service';
 
 const ItemContext = React.createContext({
   // items: [],
@@ -12,7 +13,20 @@ export class ItemProvider extends Component {
   state = {
     items: [],
     error: null,
+    authToken: null,
   };
+
+  saveAuthToken = (token) => {
+    this.setState({ authToken: token });
+  };
+
+  clearAuthToken = () => {
+    this.setState({ authToken: null });
+  };
+
+  hasAuthToken = () => {
+    return !!this.state.authToken;
+  }
 
   setError = (error) => {
     console.error(error);
@@ -42,6 +56,9 @@ export class ItemProvider extends Component {
   render() {
     const contextValue = {
       items: this.state.items,
+      saveAuthToken: this.saveAuthToken,
+      clearAuthToken: this.clearAuthToken,
+      hasAuthToken: this.hasAuthToken,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,

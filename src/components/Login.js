@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import ItemContext from '../ItemContext';
 import TokenService from '../services/token-service';
 import AuthApiService from '../services/auth-api-service';
 
 export default class Login extends Component {
+  static contextType = ItemContext;
+
   static defaultProps = {
     location: {},
     history: {
@@ -25,6 +28,7 @@ export default class Login extends Component {
         user_name.value = '';
         password.value = '';
         TokenService.saveAuthToken(res.authToken);
+        this.context.saveAuthToken(res.authToken);
 
         const { location, history } = this.props;
         const destination = (location.state || {}).from || '/';

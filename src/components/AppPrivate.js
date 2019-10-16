@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import ItemContext from '../ItemContext';
 import TokenService from '../services/token-service';
 import Inventory from './Inventory';
 import ItemDetail from './ItemDetail';
@@ -8,6 +9,8 @@ import UsageHistory from './UsageHistory';
 import NotFound from './NotFound';
 
 class AppPrivate extends Component {
+  static contextType = ItemContext;
+
   render() {
     return (
       <>
@@ -17,6 +20,7 @@ class AppPrivate extends Component {
             <button
               onClick={() => {
                 TokenService.clearAuthToken();
+                this.context.clearAuthToken();
                 this.props.history.push('/');
               }}
             >

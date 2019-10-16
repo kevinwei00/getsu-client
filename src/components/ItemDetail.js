@@ -30,6 +30,8 @@ export default class ItemDetail extends Component {
   };
 
   handleUpdateItem = (item_id) => {
+    // if-statement here to check context if item exists
+
     ItemsApiService.updateItemRequest(item_id, {
       quantity: this.state.local_quantity,
       max_quantity: this.state.local_max_quantity,
