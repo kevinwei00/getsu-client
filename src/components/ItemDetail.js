@@ -34,12 +34,6 @@ export default class ItemDetail extends Component {
       quantity: this.state.local_quantity,
       max_quantity: this.state.local_max_quantity,
     })
-      .then((res) => {
-        if (!res.ok) {
-          this.context.clearError();
-          return res.json().then((e) => Promise.reject(e));
-        }
-      })
       .catch((error) => {
         this.context.setError(error);
       });
