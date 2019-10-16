@@ -12,30 +12,16 @@ export class ItemProvider extends Component {
   state = {
     items: [],
     error: null,
-
-    hasAuthToken: false,
-  };
-////////////////////////////////////////////////////
-  handleClickLogin = () => {
-    this.setState({
-      hasAuthToken: true,
-    });
   };
 
-  handleClickLogout = () => {
-    this.setState({
-      hasAuthToken: false,
-    });
+  setError = (error) => {
+    console.error(error);
+    this.setState({ error });
   };
-////////////////////////////////////////////////////
-  setError = error => {
-    console.error(error)
-    this.setState({ error })
-  }
 
   clearError = () => {
-    this.setState({ error: null })
-  }
+    this.setState({ error: null });
+  };
 
   populateInventory = (items) => {
     this.setState({ items });
@@ -62,10 +48,6 @@ export class ItemProvider extends Component {
       populateInventory: this.populateInventory,
       addItem: this.addItem,
       deleteItem: this.deleteItem,
-
-      hasAuthToken: this.state.hasAuthToken,
-      handleClickLogin: this.handleClickLogin,
-      handleClickLogout: this.handleClickLogout,
     };
     return (
       <ItemContext.Provider value={contextValue}>

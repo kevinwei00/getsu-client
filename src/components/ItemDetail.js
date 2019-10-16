@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemContext from '../ItemContext';
-import config from '../config';
+import ItemsApiService from '../services/items-api-service';
 import NumericInput from 'react-numeric-input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
@@ -14,15 +14,8 @@ export default class ItemDetail extends Component {
     percent: 0,
   };
 
-  getItemRequest = (item_id) => {
-    fetch(`${config.API_ENDPOINT}/items/${item_id}`)
-      .then((res) => {
-        if (!res.ok) {
-          this.context.clearError();
-          return res.json().then((e) => Promise.reject(e));
-        }
-        return res.json();
-      })
+  handleGetItem = (item_id) => {
+    ItemsApiService.getItemRequest(item_id)
       .then((item) => {
         this.setState({
           currentItem: item,
@@ -36,36 +29,10 @@ export default class ItemDetail extends Component {
       });
   };
 
-  deleteItemRequest = (item_id) => {
-    fetch(`${config.API_ENDPOINT}/items/${item_id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => {
-        if (!res.ok) {
-          this.context.clearError();
-          return res.json().then((e) => Promise.reject(e));
-        }
-        return;
-      })
-      .then(() => {
-        this.context.deleteItem(item_id);
-        this.props.history.goBack();
-      })
-      .catch((error) => {
-        this.context.setError(error);
-      });
-  };
-
-  updateItemRequest = (item_id) => {
-    fetch(`${config.API_ENDPOINT}/items/${item_id}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        quantity: this.state.local_quantity,
-        max_quantity: this.state.local_max_quantity,
-      }),
+  handleUpdateItem = (item_id) => {
+    ItemsApiService.updateItemRequest(item_id, {
+      quantity: this.state.local_quantity,
+      max_quantity: this.state.local_max_quantity,
     })
       .then((res) => {
         if (!res.ok) {
@@ -79,7 +46,14 @@ export default class ItemDetail extends Component {
   };
 
   handleDeleteItem = (item_id) => {
-    this.deleteItemRequest(item_id);
+    ItemsApiService.deleteItemRequest(item_id)
+      .then(() => {
+        this.context.deleteItem(item_id);
+        this.props.history.goBack();
+      })
+      .catch((error) => {
+        this.context.setError(error);
+      });
   };
 
   handleChange = (val) => {
@@ -100,17 +74,17 @@ export default class ItemDetail extends Component {
 
   handleWindowClose = (e) => {
     e.preventDefault();
-    return (e.returnValue = this.updateItemRequest(this.props.match.params.item_id));
+    return (e.returnValue = this.handleUpdateItem(this.props.match.params.item_id));
   };
 
   componentDidMount = () => {
     window.addEventListener('beforeunload', this.handleWindowClose);
-    this.getItemRequest(this.props.match.params.item_id);
+    this.handleGetItem(this.props.match.params.item_id);
   };
 
   componentWillUnmount = () => {
     window.removeEventListener('beforeunload', this.handleWindowClose);
-    this.updateItemRequest(this.props.match.params.item_id);
+    this.handleUpdateItem(this.props.match.params.item_id);
   };
 
   render() {

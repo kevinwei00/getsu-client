@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import ItemContext from '../ItemContext';
 import './App.css';
+import TokenService from '../services/token-service'
 import AppPrivate from './AppPrivate';
 import AppLanding from './AppLanding';
 
 export default class App extends Component {
-  static contextType = ItemContext;
-
   render() {
     return (
       <div className="App">
-        {this.context.hasAuthToken ? <AppPrivate /> : <AppLanding />}
+        {TokenService.hasAuthToken() ? <AppPrivate /> : <AppLanding />}
       </div>
     );
   }

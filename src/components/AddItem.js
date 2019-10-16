@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemContext from '../ItemContext';
-import config from '../config';
+import ItemsApiService from '../services/items-api-service';
 
 export default class AddItem extends Component {
   static contextType = ItemContext;
@@ -42,24 +42,11 @@ export default class AddItem extends Component {
       unit_type: this.state.unit_type.value,
       expiration_date: this.state.expiration_date.value,
     };
-    this.createItemRequest(newItem);
+    this.handleCreateItem(newItem);
   };
 
-  createItemRequest = (item) => {
-    fetch(`${config.API_ENDPOINT}/items`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(item),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          this.context.clearError();
-          return res.json().then((e) => Promise.reject(e));
-        }
-        return res.json();
-      })
+  handleCreateItem = (item) => {
+    ItemsApiService.createItemRequest(item)
       .then((item) => {
         this.context.addItem(item);
         this.props.history.goBack();
@@ -116,7 +103,9 @@ export default class AddItem extends Component {
             />
           </div>
           <div className="AddItem__form__buttons">
-            <button type="button" onClick={this.props.history.goBack}>Cancel</button>
+            <button type="button" onClick={this.props.history.goBack}>
+              Cancel
+            </button>
             <button type="submit">Save</button>
           </div>
         </form>
