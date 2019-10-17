@@ -99,7 +99,6 @@ export default class AddItem extends Component {
               name="expiration_date"
               id="expiration_date"
               onChange={this.handleChange}
-              required
             />
           </div>
           <div className="AddItem__form__buttons">

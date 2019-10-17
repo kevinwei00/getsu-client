@@ -3,6 +3,10 @@ import './ProgressBar.css';
 
 export default class ProgressBar extends Component {
   getBarColor = (expiration_date) => {
+    if (expiration_date === 'null') {
+      return 'ProgressBar__inner--nonperishable';
+    }
+
     const today = new Date();
     expiration_date = new Date(expiration_date);
     let numDays = (expiration_date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
@@ -16,7 +20,6 @@ export default class ProgressBar extends Component {
     } else if (numDays > 4) {
       return 'ProgressBar__inner--fresh';
     }
-    //return 'ProgressBar__inner--nonperishable';
   };
 
   render() {

@@ -100,11 +100,17 @@ export default class ItemDetail extends Component {
     } else if (!this.state.currentItem) {
       content = <div>Loading...</div>;
     } else {
-      const d = new Date(this.state.currentItem.expiration_date);
-      const expiration_date = `
+      let expiration_display;
+      if (!this.state.currentItem.expiration_date) {
+        expiration_display = 'N/A';
+      }
+      else {
+        const d = new Date(this.state.currentItem.expiration_date);
+        expiration_display = `
         ${d.getMonth() > 8 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)}
          / ${d.getDate() > 9 ? d.getDate() : '0' + d.getDate()}
          / ${d.getFullYear()}`;
+      }
       content = (
         <section className="ItemDetail">
           <h1>{this.state.currentItem.item_name}</h1>
@@ -142,7 +148,7 @@ export default class ItemDetail extends Component {
           <p />
           <div>
             <b>Expires</b>
-            <div>{expiration_date}</div>
+            <div>{expiration_display}</div>
           </div>
           <p />
           <button onClick={this.props.history.goBack}>Go Back</button>
