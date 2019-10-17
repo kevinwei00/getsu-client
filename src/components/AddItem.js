@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import ItemContext from '../ItemContext';
 import ItemsApiService from '../services/items-api-service';
 
+function RequiredField() {
+  return (
+    <div className="RequiredField" style={{ color: 'red', display: 'inline-block' }}>
+      &#42;
+    </div>
+  );
+}
+
 export default class AddItem extends Component {
   static contextType = ItemContext;
 
@@ -39,7 +47,7 @@ export default class AddItem extends Component {
       item_name: this.state.item_name.value,
       quantity: this.state.quantity.value,
       max_quantity: this.state.quantity.value,
-      unit_type: this.state.unit_type.value,
+      unit_type: this.state.unit_type.value ? this.state.unit_type.value : 'units',
       expiration_date: this.state.expiration_date.value,
     };
     this.handleCreateItem(newItem);
@@ -62,7 +70,9 @@ export default class AddItem extends Component {
         <h1>Add Item</h1>
         <form className="AddItem__form" onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="item_name">Item Name</label>
+            <label htmlFor="item_name">
+              Name <RequiredField />
+            </label>
             <input
               type="text"
               name="item_name"
@@ -72,7 +82,9 @@ export default class AddItem extends Component {
             />
           </div>
           <div>
-            <label htmlFor="quantity">Quantity</label>
+            <label htmlFor="quantity">
+              Quantity <RequiredField />
+            </label>
             <input
               type="number"
               step="any"
@@ -89,7 +101,7 @@ export default class AddItem extends Component {
               name="unit_type"
               id="unit_type"
               onChange={this.handleChange}
-              required
+              placeholder="e.g. units, cups, lbs, kg"
             />
           </div>
           <div>
