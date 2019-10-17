@@ -30,12 +30,15 @@ export default class Inventory extends Component {
         <button onClick={() => this.props.history.push('/add-item')}>Add Item</button>
         <ul className="Inventory__List">
           {items
-            .sort((itemA, itemB) => {
-              return new Date(itemA.expiration_date) - new Date(itemB.expiration_date);
-            })
-            .map((item) => {
-              return <Item key={item.id} item={item} />;
-            })}
+            .filter((item) => item.expiration_date)
+            .sort(
+              (itemA, itemB) =>
+                new Date(itemA.expiration_date) - new Date(itemB.expiration_date)
+            )
+            .concat(items.filter((item) => !item.expiration_date))
+            .map((item) => (
+              <Item key={item.id} item={item} />
+            ))}
         </ul>
       </section>
     );
