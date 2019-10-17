@@ -1,0 +1,40 @@
+.ProgressBar {
+  display: flex;
+  height: 1rem;
+  overflow: hidden;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  min-height: 32px;
+}
+
+.ProgressBar__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  transition: width 0.6s ease;
+  text-shadow: black 1px 1px;
+  font-size: 1em;
+}
+
+.ProgressBar__inner--nonperishable {
+  background-color: #007bff;
+}
+
+.ProgressBar__inner--fresh {
+  background-color: #28a745;
+}
+
+.ProgressBar__inner--warning {
+  background-color: #ffc107;
+}
+
+.ProgressBar__inner--danger {
+  background-color: #dc3545;
+}
+
+.ProgressBar__inner--expired {
+  background-color: #343a40;
+}

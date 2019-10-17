@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ItemContext from '../ItemContext';
 import ItemsApiService from '../services/items-api-service';
 import NumericInput from 'react-numeric-input';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import ProgressBar from './ProgressBar';
 
 export default class ItemDetail extends Component {
   static contextType = ItemContext;
@@ -109,6 +109,7 @@ export default class ItemDetail extends Component {
         <section className="ItemDetail">
           <h1>{this.state.currentItem.item_name}</h1>
           <ProgressBar
+            expiration_date={`${this.state.currentItem.expiration_date}`}
             now={Math.round(this.state.percent)}
             label={`${this.state.local_quantity} / ${this.state.local_max_quantity} ${this.state.currentItem.unit_type}`}
           />
