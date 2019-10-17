@@ -30,7 +30,7 @@ export default class ItemDetail extends Component {
   };
 
   handleUpdateItem = (item_id) => {
-    // if item doesn't exit, or if not authorized, early exit
+    // if item doesn't exist, or if not authorized, early exit
     if (!this.context.getItem(item_id) || !this.context.hasAuthToken()) {
       return;
     }
@@ -55,18 +55,24 @@ export default class ItemDetail extends Component {
   };
 
   handleChange = (val) => {
-    // console.log(val);
-    this.setState({ local_quantity: val });
     if (val >= this.state.currentItem.max_quantity) {
-      this.setState({
-        local_max_quantity: val,
-        percent: 100,
-      });
+      this.setState(
+        {
+          local_quantity: val,
+          local_max_quantity: val,
+          percent: 100,
+        },
+        () => this.handleUpdateItem(this.props.match.params.item_id)
+      );
     } else if (val < this.state.currentItem.max_quantity) {
-      this.setState({
-        local_max_quantity: this.state.currentItem.max_quantity,
-        percent: (val / this.state.currentItem.max_quantity) * 100,
-      });
+      this.setState(
+        {
+          local_quantity: val,
+          local_max_quantity: this.state.currentItem.max_quantity,
+          percent: (val / this.state.currentItem.max_quantity) * 100,
+        },
+        () => this.handleUpdateItem(this.props.match.params.item_id)
+      );
     }
   };
 
@@ -82,7 +88,6 @@ export default class ItemDetail extends Component {
 
   componentWillUnmount = () => {
     window.removeEventListener('beforeunload', this.handleWindowClose);
-    this.handleUpdateItem(this.props.match.params.item_id);
   };
 
   render() {
