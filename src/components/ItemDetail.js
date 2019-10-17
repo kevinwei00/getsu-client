@@ -126,6 +126,7 @@ export default class ItemDetail extends Component {
                 placeholder="Quantity"
                 strict
                 min={0}
+                precision={2}
                 defaultValue={this.state.local_quantity}
                 onChange={this.handleChange}
                 style={{
@@ -134,7 +135,7 @@ export default class ItemDetail extends Component {
                   },
                   input: {
                     height: '64px',
-                    width: '128px',
+                    width: '256px',
                     fontWeight: 100,
                   },
                   btn: {
