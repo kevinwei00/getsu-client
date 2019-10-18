@@ -49,6 +49,10 @@ export class ItemProvider extends Component {
     this.setState({ sortBy });
   };
 
+  resetSortBy = () => {
+    this.setState({ sortBy: 'expiration_date' });
+  };
+
   addItem = (item) => {
     this.setState({
       items: [...this.state.items, item],
@@ -78,6 +82,7 @@ export class ItemProvider extends Component {
       clearInventory: this.clearInventory,
       sortBy: this.state.sortBy,
       setSortBy: this.setSortBy,
+      resetSortBy: this.resetSortBy,
       addItem: this.addItem,
       deleteItem: this.deleteItem,
       getItem: this.getItem,

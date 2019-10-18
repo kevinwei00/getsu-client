@@ -23,6 +23,7 @@ class AppPrivate extends Component {
                 TokenService.clearAuthToken();
                 this.context.clearAuthToken();
                 this.context.clearInventory();
+                this.context.resetSortBy();
                 this.props.history.push('/');
               }}
             >
