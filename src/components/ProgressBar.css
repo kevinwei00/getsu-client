@@ -1,10 +1,9 @@
 .ProgressBar {
   display: flex;
-  height: 1rem;
   overflow: hidden;
   background-color: #e9ecef;
-  border-radius: 5px;
-  min-height: 32px;
+  border-radius: .5rem;
+  min-height: 3rem;
 }
 
 .ProgressBar__inner {
@@ -16,7 +15,6 @@
   white-space: nowrap;
   transition: width 0.6s ease;
   text-shadow: black 1px 1px;
-  font-size: 1em;
 }
 
 .ProgressBar__inner--nonperishable {
