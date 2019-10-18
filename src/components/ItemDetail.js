@@ -93,6 +93,7 @@ export default class ItemDetail extends Component {
   render() {
     const { error } = this.context;
     let content;
+    let expiration_display;
     if (error) {
       content = (
         <div>{error.message ? 'Internal Server Error' : error.error.message}</div>
@@ -100,16 +101,18 @@ export default class ItemDetail extends Component {
     } else if (!this.state.currentItem) {
       content = <div>Loading...</div>;
     } else {
-      let expiration_display;
-      if (!this.state.currentItem.expiration_date) {
-        expiration_display = 'N/A';
-      }
-      else {
+      if (this.state.currentItem.expiration_date) {
         const d = new Date(this.state.currentItem.expiration_date);
-        expiration_display = `
-        ${d.getMonth() > 8 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)}
-         / ${d.getDate() > 9 ? d.getDate() : '0' + d.getDate()}
-         / ${d.getFullYear()}`;
+        expiration_display = (
+          <div>
+            <b>Expires</b>
+            <div>
+              {`${d.getMonth() > 8 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)}
+              / ${d.getDate() > 9 ? d.getDate() : '0' + d.getDate()}
+              / ${d.getFullYear()}`}
+            </div>
+          </div>
+        );
       }
       content = (
         <section className="ItemDetail">
@@ -144,13 +147,9 @@ export default class ItemDetail extends Component {
                 }}
               />
             </div>
-            {/* out of {this.state.local_max_quantity} {this.state.currentItem.unit_type} */}
           </div>
           <p />
-          <div>
-            <b>Expires</b>
-            <div>{expiration_display}</div>
-          </div>
+          {expiration_display}
           <p />
           <button onClick={this.props.history.goBack}>Go Back</button>
           <button onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}>

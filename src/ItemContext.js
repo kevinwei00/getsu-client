@@ -13,6 +13,7 @@ export class ItemProvider extends Component {
     items: [],
     error: null,
     authToken: null,
+    sortBy: 'expiration_date',
   };
 
   saveAuthToken = (token) => {
@@ -44,6 +45,10 @@ export class ItemProvider extends Component {
     this.setState({ items: [] });
   };
 
+  setSortBy = (sortBy) => {
+    this.setState({ sortBy });
+  };
+
   addItem = (item) => {
     this.setState({
       items: [...this.state.items, item],
@@ -71,6 +76,8 @@ export class ItemProvider extends Component {
       clearError: this.clearError,
       populateInventory: this.populateInventory,
       clearInventory: this.clearInventory,
+      sortBy: this.state.sortBy,
+      setSortBy: this.setSortBy,
       addItem: this.addItem,
       deleteItem: this.deleteItem,
       getItem: this.getItem,
