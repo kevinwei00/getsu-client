@@ -15,10 +15,11 @@ class AppPrivate extends Component {
     return (
       <>
         <nav>
-          Welcome, --
+          Welcome, {TokenService.getCurrentUserName()}
           <div>
             <button
               onClick={() => {
+                TokenService.clearCurrentUserName();
                 TokenService.clearAuthToken();
                 this.context.clearAuthToken();
                 this.context.clearInventory();

@@ -4,4 +4,5 @@ export default {
       ? process.env.REACT_APP_API_ENDPOINT
       : 'http://localhost:8000/api',
   TOKEN_KEY: 'getsu-client-auth-token',
+  USERNAME_KEY: 'getsu-client-current-username',
 };

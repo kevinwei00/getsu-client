@@ -13,6 +13,16 @@ const TokenService = {
   hasAuthToken() {
     return !!TokenService.getAuthToken();
   },
+
+  saveCurrentUserName(user_name) {
+    window.localStorage.setItem(config.USERNAME_KEY, user_name);
+  },
+  getCurrentUserName() {
+    return window.localStorage.getItem(config.USERNAME_KEY);
+  },
+  clearCurrentUserName() {
+    window.localStorage.removeItem(config.USERNAME_KEY);
+  },
 };
 
 export default TokenService;

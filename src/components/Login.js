@@ -25,10 +25,12 @@ export default class Login extends Component {
       password: password.value,
     })
       .then((res) => {
-        user_name.value = '';
-        password.value = '';
+        TokenService.saveCurrentUserName(user_name.value);
         TokenService.saveAuthToken(res.authToken);
         this.context.saveAuthToken(res.authToken);
+
+        user_name.value = '';
+        password.value = '';
 
         const { location, history } = this.props;
         const destination = (location.state || {}).from || '/';
@@ -52,12 +54,7 @@ export default class Login extends Component {
           </div>
           <div className="password">
             <label htmlFor="password">Password</label>
-            <input
-              required
-              name="password"
-              type="password"
-              id="password"
-            ></input>
+            <input required name="password" type="password" id="password"></input>
           </div>
           <button type="submit">Login</button>
         </form>
