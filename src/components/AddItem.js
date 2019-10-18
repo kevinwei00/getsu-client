@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import ItemContext from '../ItemContext';
 import ItemsApiService from '../services/items-api-service';
-
-function RequiredField() {
-  return (
-    <div className="RequiredField" style={{ color: 'red', display: 'inline-block' }}>
-      &#42;
-    </div>
-  );
-}
+import RequiredField from './RequiredField';
 
 export default class AddItem extends Component {
   static contextType = ItemContext;
