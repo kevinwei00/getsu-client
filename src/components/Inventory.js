@@ -35,9 +35,10 @@ export default class Inventory extends Component {
               (itemA, itemB) =>
                 new Date(itemA.expiration_date) - new Date(itemB.expiration_date)
             )
+            // this line warns "Each child in a list should have a unique 'key' prop."
             .concat(items.filter((item) => !item.expiration_date))
             .map((item) => (
-              <Item key={item.id} item={item} />
+              <Item key={item.item_id} item={item} />
             ))}
         </ul>
       </section>

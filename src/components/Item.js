@@ -8,7 +8,7 @@ export default class Item extends Component {
     return (
       <li className="Item">
         <div className="Item__container">
-          <Link to={`/item/${item.id}`}>
+          <Link to={`/item/${item.item_id}`}>
             {item.item_name}
             <ProgressBar
               expiration_date={`${item.expiration_date}`}

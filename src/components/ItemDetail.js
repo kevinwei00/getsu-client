@@ -153,7 +153,7 @@ export default class ItemDetail extends Component {
           </div>
           <p />
           <button onClick={this.props.history.goBack}>Go Back</button>
-          <button onClick={() => this.handleDeleteItem(this.state.currentItem.id)}>
+          <button onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}>
             Delete Item
           </button>
         </section>

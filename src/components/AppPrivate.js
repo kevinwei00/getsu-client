@@ -21,6 +21,7 @@ class AppPrivate extends Component {
               onClick={() => {
                 TokenService.clearAuthToken();
                 this.context.clearAuthToken();
+                this.context.clearInventory();
                 this.props.history.push('/');
               }}
             >

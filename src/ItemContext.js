@@ -40,6 +40,10 @@ export class ItemProvider extends Component {
     this.setState({ items });
   };
 
+  clearInventory = () => {
+    this.setState({ items: [] });
+  };
+
   addItem = (item) => {
     this.setState({
       items: [...this.state.items, item],
@@ -48,12 +52,12 @@ export class ItemProvider extends Component {
 
   deleteItem = (item_id) => {
     this.setState({
-      items: this.state.items.filter((item) => item.id !== item_id),
+      items: this.state.items.filter((item) => item.item_id !== item_id),
     });
   };
 
   getItem = (item_id) => {
-    return this.state.items.find((item) => item.id === item_id);
+    return this.state.items.find((item) => item.item_id === item_id);
   };
 
   render() {
@@ -66,6 +70,7 @@ export class ItemProvider extends Component {
       setError: this.setError,
       clearError: this.clearError,
       populateInventory: this.populateInventory,
+      clearInventory: this.clearInventory,
       addItem: this.addItem,
       deleteItem: this.deleteItem,
       getItem: this.getItem,
