@@ -108,7 +108,9 @@ export default class ItemDetail extends Component {
 
     if (error) {
       content = (
-        <div>{error.message ? 'Internal Server Error' : error.error.message}</div>
+        <div className="error-display">
+          {error.message ? 'Internal Server Error' : error.error.message}
+        </div>
       );
     } else if (!this.state.currentItem) {
       content = <div>Could not retrieve item</div>;

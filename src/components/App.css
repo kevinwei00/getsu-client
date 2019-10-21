@@ -1,3 +1,13 @@
 .App {
-  
+}
+
+.App nav {
+  display: flex;
+}
+
+.App main {
+}
+
+.error-display {
+  color: red;
 }

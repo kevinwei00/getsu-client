@@ -29,8 +29,8 @@ class AppPrivate extends Component {
             >
               Logout
             </button>
-            <button onClick={() => this.props.history.push('/')}>Inventory</button>
-            <button>History</button>
+            {/* <button onClick={() => this.props.history.push('/')}>Inventory</button>
+            <button>History</button> */}
           </div>
         </nav>
         <main>

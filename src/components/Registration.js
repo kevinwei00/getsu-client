@@ -35,7 +35,11 @@ export default class Registration extends Component {
       <section className="Registration">
         <h2>Register</h2>
         <form className="Registration__form" onSubmit={this.handleSubmit}>
-          <div role="alert">{error && <p className="red">{error}</p>}</div>
+          {error && (
+            <div className="error-display" role="alert">
+              {error}
+            </div>
+          )}
           <div className="user_name">
             <label htmlFor="user_name">
               User Name <RequiredField />

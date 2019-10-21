@@ -84,11 +84,3 @@ a,
 a:hover {
   text-decoration: none;
 }
-
-.Item {
-  list-style: none;
-}
-
-.Item__container {
-  margin: 1rem 1.5rem;
-}

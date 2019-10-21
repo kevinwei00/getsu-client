@@ -98,7 +98,9 @@ export default class Inventory extends Component {
 
     if (error) {
       content = (
-        <div>{error.message ? 'Internal Server Error' : error.error.message}</div>
+        <div className="error-display">
+          {error.message ? 'Internal Server Error' : error.error.message}
+        </div>
       );
     } else if (this.context.items.length === 0) {
       content = <div>Empty!</div>;
