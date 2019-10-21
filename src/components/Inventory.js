@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import ItemContext from '../ItemContext';
 import ItemsApiService from '../services/items-api-service';
+import ExpirationsService from '../services/expirations-service';
 import Item from './Item';
 
 export default class Inventory extends Component {
@@ -22,28 +23,48 @@ export default class Inventory extends Component {
   };
 
   handleSort = (items) => {
-    const maxFutureDate = '5874897-12-30T00:00:00.000Z';
+    const maxDate = '9999-12-31T00:00:00.000Z';
+
+    // sort by expiration date (expired first, non-perishable last)
+    // then by quantity (lowest quantity first)
+    // then by max_quantity (highest max_quantity first)
     if (this.context.sortBy === 'expiration_date') {
+      const buckets = {};
+      ['expired', 'danger', 'warning', 'fresh', 'nonperishable'].forEach((key) => {
+        buckets[key] = [];
+      });
+      items
+        .sort(
+          (itemA, itemB) =>
+            new Date(itemA.expiration_date || maxDate) -
+            new Date(itemB.expiration_date || maxDate)
+        )
+        .forEach((item) => {
+          buckets[ExpirationsService.getExpirationString(item.expiration_date)].push(
+            item
+          );
+        });
+      const bucketsArray = [];
+      for (let key of Object.keys(buckets)) {
+        buckets[key].sort(
+          (itemA, itemB) =>
+            itemA.quantity - itemB.quantity || itemB.max_quantity - itemA.max_quantity
+        );
+        bucketsArray.push(buckets[key]);
+      }
+      return [].concat(...bucketsArray);
+    }
+
+    // sort by quantity (lowest quantity first)
+    // then by max_quantity (highest max_quantity first)
+    // then by expiration date (expired first, non-perishable last)
+    else if (this.context.sortBy === 'quantity') {
       return items.sort(
         (itemA, itemB) =>
-          // sort by expiration date (expired first, non-perishable last)
-          new Date(itemA.expiration_date || maxFutureDate) -
-            new Date(itemB.expiration_date || maxFutureDate) ||
-          // then by quantity (lowest quantity first)
           itemA.quantity - itemB.quantity ||
-          // then by max_quantity (lowest max_quantity first)
-          itemA.max_quantity - itemB.max_quantity
-      );
-    } else if (this.context.sortBy === 'quantity') {
-      return items.sort(
-        (itemA, itemB) =>
-          // sort by quantity (lowest quantity first)
-          itemA.quantity - itemB.quantity ||
-          // then by max_quantity (lowest max_quantity first)
-          itemA.max_quantity - itemB.max_quantity ||
-          // then by expiration date (expired first, non-perishable last)
-          new Date(itemA.expiration_date || maxFutureDate) -
-            new Date(itemB.expiration_date || maxFutureDate)
+          itemB.max_quantity - itemA.max_quantity ||
+          new Date(itemA.expiration_date || maxDate) -
+            new Date(itemB.expiration_date || maxDate)
       );
     }
   };
