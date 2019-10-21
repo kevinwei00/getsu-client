@@ -30,8 +30,13 @@ export default class ItemDetail extends Component {
   };
 
   handleUpdateItem = (item_id) => {
-    // if item doesn't exist, or if not authorized, early exit
-    if (!this.context.getItem(item_id) || !this.context.hasAuthToken()) {
+    // if item doesn't exist, early exit
+    // if (!this.context.getItem(item_id)) {
+    //   return;
+    // }
+
+    // if not authorized, early exit
+    if (!this.context.hasAuthToken()) {
       return;
     }
 

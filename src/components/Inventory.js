@@ -73,31 +73,47 @@ export default class Inventory extends Component {
     this.handleGetAllItems();
   };
 
+  componentWillUnmount = () => {
+    this.context.clearItems();
+  }
+
   render() {
-    const sortedItems = this.handleSort([...this.context.items]);
-    return (
-      <section className="Inventory">
-        <h1>Inventory</h1>
-        {/* <Link to="/add-item">Add Item</Link> */}
-        <button onClick={() => this.props.history.push('/add-item')}>Add Item</button>
-        <div className="Inventory__sortby">
-          <label htmlFor="">Sort By</label>
-          <select
-            name="sortby_options"
-            id="sortby_options"
-            onChange={this.handleChange}
-            defaultValue={this.context.sortBy}
-          >
-            <option value={'expiration_date'}>Expiration Date</option>
-            <option value={'quantity'}>Quantity</option>
-          </select>
-        </div>
-        <ul className="Inventory__list">
-          {sortedItems.map((item) => (
-            <Item key={item.item_id} item={item} />
-          ))}
-        </ul>
-      </section>
-    );
+    const { error } = this.context;
+    let content;
+    if (error) {
+      content = (
+        <div>{error.message ? 'Internal Server Error' : error.error.message}</div>
+      );
+    } else if (this.context.items.length === 0) {
+      content = <div>Loading...</div>;
+    } else {
+      const sortedItems = this.handleSort([...this.context.items]);
+      content = (
+        <section className="Inventory">
+          <h1>Inventory</h1>
+          {/* <Link to="/add-item">Add Item</Link> */}
+          <button onClick={() => this.props.history.push('/add-item')}>Add Item</button>
+          <div className="Inventory__sortby">
+            <label htmlFor="">Sort By</label>
+            <select
+              name="sortby_options"
+              id="sortby_options"
+              onChange={this.handleChange}
+              defaultValue={this.context.sortBy}
+            >
+              <option value={'expiration_date'}>Expiration Date</option>
+              <option value={'quantity'}>Quantity</option>
+            </select>
+          </div>
+          <ul className="Inventory__list">
+            {sortedItems.map((item) => (
+              <Item key={item.item_id} item={item} />
+            ))}
+          </ul>
+        </section>
+      );
+    }
+
+    return <>{content}</>;
   }
 }
