@@ -108,7 +108,7 @@ export default class ItemDetail extends Component {
 
     if (error) {
       content = (
-        <div className="error-display">
+        <div className="error-display"  role="alert">
           {error.message ? 'Internal Server Error' : error.error.message}
         </div>
       );
