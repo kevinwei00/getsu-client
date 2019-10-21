@@ -67,6 +67,11 @@ export default class Inventory extends Component {
             new Date(itemB.expiration_date || maxDate)
       );
     }
+
+    // sort by name
+    else if (this.context.sortBy === 'item_name') {
+      return items.sort((itemA, itemB) => itemA.item_name.localeCompare(itemB.item_name));
+    }
   };
 
   componentDidMount = () => {
@@ -75,7 +80,7 @@ export default class Inventory extends Component {
 
   componentWillUnmount = () => {
     this.context.clearItems();
-  }
+  };
 
   render() {
     const { error } = this.context;
@@ -102,6 +107,7 @@ export default class Inventory extends Component {
               defaultValue={this.context.sortBy}
             >
               <option value={'expiration_date'}>Expiration Date</option>
+              <option value={'item_name'}>Name</option>
               <option value={'quantity'}>Quantity</option>
             </select>
           </div>
