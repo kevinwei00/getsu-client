@@ -8,9 +8,14 @@ import Item from './Item';
 export default class Inventory extends Component {
   static contextType = ItemContext;
 
+  state = {
+    hasServerResponse: false,
+  };
+
   handleGetAllItems = () => {
     ItemsApiService.getAllItemsRequest()
       .then((items) => {
+        this.setState({ hasServerResponse: true });
         this.context.fillItems(items);
       })
       .catch((error) => {
@@ -84,21 +89,23 @@ export default class Inventory extends Component {
   };
 
   render() {
+    if (!this.state.hasServerResponse) {
+      return <div className="Loading">Loading...</div>;
+    }
+
     const { error } = this.context;
     let content;
+
     if (error) {
       content = (
         <div>{error.message ? 'Internal Server Error' : error.error.message}</div>
       );
     } else if (this.context.items.length === 0) {
-      content = <div>Loading...</div>;
+      content = <div>Empty!</div>;
     } else {
       const sortedItems = this.handleSort([...this.context.items]);
       content = (
-        <section className="Inventory">
-          <h1>Inventory</h1>
-          {/* <Link to="/add-item">Add Item</Link> */}
-          <button onClick={() => this.props.history.push('/add-item')}>Add Item</button>
+        <>
           <div className="Inventory__sortby">
             <label htmlFor="">Sort By</label>
             <select
@@ -117,10 +124,17 @@ export default class Inventory extends Component {
               <Item key={item.item_id} item={item} />
             ))}
           </ul>
-        </section>
+        </>
       );
     }
 
-    return <>{content}</>;
+    return (
+      <section className="Inventory">
+        <h1>Inventory</h1>
+        {/* <Link to="/add-item">Add Item</Link> */}
+        <button onClick={() => this.props.history.push('/add-item')}>Add Item</button>
+        {content}
+      </section>
+    );
   }
 }

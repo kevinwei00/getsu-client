@@ -8,6 +8,7 @@ export default class ItemDetail extends Component {
   static contextType = ItemContext;
 
   state = {
+    hasServerResponse: false,
     currentItem: null,
     local_quantity: 0,
     local_max_quantity: 0,
@@ -18,6 +19,7 @@ export default class ItemDetail extends Component {
     ItemsApiService.getItemRequest(item_id)
       .then((item) => {
         this.setState({
+          hasServerResponse: true,
           currentItem: item,
           local_quantity: item.quantity,
           local_max_quantity: item.max_quantity,
@@ -96,15 +98,20 @@ export default class ItemDetail extends Component {
   };
 
   render() {
+    if (!this.state.hasServerResponse) {
+      return <div className="Loading">Loading...</div>;
+    }
+
     const { error } = this.context;
     let content;
     let expiration_display;
+
     if (error) {
       content = (
         <div>{error.message ? 'Internal Server Error' : error.error.message}</div>
       );
     } else if (!this.state.currentItem) {
-      content = <div>Loading...</div>;
+      content = <div>Could not retrieve item</div>;
     } else {
       if (this.state.currentItem.expiration_date) {
         const d = new Date(this.state.currentItem.expiration_date);
