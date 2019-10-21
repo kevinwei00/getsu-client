@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const ItemContext = React.createContext({
   // items: [],
-  // populateInventory: () => {},
+  // fillItems: () => {},
   // addItem: () => {},
 });
 
@@ -37,11 +37,11 @@ export class ItemProvider extends Component {
     this.setState({ error: null });
   };
 
-  populateInventory = (items) => {
+  fillItems = (items) => {
     this.setState({ items });
   };
 
-  clearInventory = () => {
+  clearItems = () => {
     this.setState({ items: [] });
   };
 
@@ -78,8 +78,8 @@ export class ItemProvider extends Component {
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
-      populateInventory: this.populateInventory,
-      clearInventory: this.clearInventory,
+      fillItems: this.fillItems,
+      clearItems: this.clearItems,
       sortBy: this.state.sortBy,
       setSortBy: this.setSortBy,
       resetSortBy: this.resetSortBy,

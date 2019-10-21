@@ -11,7 +11,7 @@ export default class Inventory extends Component {
   handleGetAllItems = () => {
     ItemsApiService.getAllItemsRequest()
       .then((items) => {
-        this.context.populateInventory(items);
+        this.context.fillItems(items);
       })
       .catch((error) => {
         this.context.setError(error);
