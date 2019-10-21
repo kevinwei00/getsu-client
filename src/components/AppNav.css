@@ -1,0 +1,24 @@
+.AppNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #56727c;
+}
+
+.AppNav__section {
+  display: flex;
+  align-items: center;
+}
+
+.AppNav__item {
+  padding: 0.33rem 1rem;
+}
+
+.AppNav__item + .AppNav__item {
+  margin-left: 0.33rem;
+}
+
+.AppNav__logo {
+  font-size: 1.5rem;
+  color: white;
+}

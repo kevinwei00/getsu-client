@@ -1,11 +1,7 @@
 .App {
 }
 
-.App nav {
-  display: flex;
-}
-
-.App main {
+.App__main {
 }
 
 .error-display {

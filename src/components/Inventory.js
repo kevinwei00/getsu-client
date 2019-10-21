@@ -98,7 +98,7 @@ export default class Inventory extends Component {
 
     if (error) {
       content = (
-        <div className="error-display"  role="alert">
+        <div className="error-display" role="alert">
           {error.message ? 'Internal Server Error' : error.error.message}
         </div>
       );
@@ -132,7 +132,9 @@ export default class Inventory extends Component {
 
     return (
       <section className="Inventory">
-        <h1>Inventory</h1>
+        <header>
+          <h1>Inventory</h1>
+        </header>
         {/* <Link to="/add-item">Add Item</Link> */}
         <button onClick={() => this.props.history.push('/add-item')}>Add Item</button>
         {content}
