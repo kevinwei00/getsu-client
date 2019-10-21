@@ -7,6 +7,7 @@ export default class AddItem extends Component {
   static contextType = ItemContext;
 
   state = {
+    toggle_expiration_date: false,
     item_name: {
       value: '',
       touched: false,
@@ -30,6 +31,16 @@ export default class AddItem extends Component {
       [e.target.name]: {
         value: e.target.value,
         touched: true,
+      },
+    });
+  };
+
+  handleToggleExpirationDate = (e) => {
+    this.setState({
+      toggle_expiration_date: e.target.checked,
+      expiration_date: {
+        value: e.target.value ? e.target.checked : null,
+        touched: !e.target.checked,
       },
     });
   };
@@ -98,14 +109,25 @@ export default class AddItem extends Component {
             />
           </div>
           <div>
-            <label htmlFor="expiration_date">Expiration Date</label>
+            <label htmlFor="toggle_expiration_date">Has Expiration Date</label>
             <input
-              type="date"
-              name="expiration_date"
-              id="expiration_date"
-              onChange={this.handleChange}
+              type="checkbox"
+              name="toggle_expiration_date"
+              id="toggle_expiration_date"
+              onChange={this.handleToggleExpirationDate}
             />
           </div>
+          {this.state.toggle_expiration_date && (
+            <div>
+              <label htmlFor="expiration_date">Expiration Date</label>
+              <input
+                type="date"
+                name="expiration_date"
+                id="expiration_date"
+                onChange={this.handleChange}
+              />
+            </div>
+          )}
           <div className="AddItem__form__buttons">
             <button type="button" onClick={this.props.history.goBack}>
               Cancel
