@@ -26,8 +26,8 @@ export default class Inventory extends Component {
     const maxDate = '9999-12-31T00:00:00.000Z';
 
     // sort by expiration date (expired first, non-perishable last)
-    // then by quantity (lowest quantity first)
-    // then by max_quantity (highest max_quantity first)
+    // then by percentage (lowest percentage first)
+    // then by max_quantity (lowest max_quantity first)
     if (this.context.sortBy === 'expiration_date') {
       const buckets = {};
       ['expired', 'danger', 'warning', 'fresh', 'nonperishable'].forEach((key) => {
@@ -48,21 +48,22 @@ export default class Inventory extends Component {
       for (let key of Object.keys(buckets)) {
         buckets[key].sort(
           (itemA, itemB) =>
-            itemA.quantity - itemB.quantity || itemB.max_quantity - itemA.max_quantity
+            itemA.quantity / itemA.max_quantity - itemB.quantity / itemB.max_quantity ||
+            itemA.max_quantity - itemB.max_quantity
         );
         bucketsArray.push(buckets[key]);
       }
       return [].concat(...bucketsArray);
     }
 
-    // sort by quantity (lowest quantity first)
-    // then by max_quantity (highest max_quantity first)
+    // sort by percentage (lowest percentage first)
+    // then by max_quantity (lowest max_quantity first)
     // then by expiration date (expired first, non-perishable last)
     else if (this.context.sortBy === 'quantity') {
       return items.sort(
         (itemA, itemB) =>
-          itemA.quantity - itemB.quantity ||
-          itemB.max_quantity - itemA.max_quantity ||
+          itemA.quantity / itemA.max_quantity - itemB.quantity / itemB.max_quantity ||
+          itemA.max_quantity - itemB.max_quantity ||
           new Date(itemA.expiration_date || maxDate) -
             new Date(itemB.expiration_date || maxDate)
       );
