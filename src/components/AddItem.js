@@ -131,10 +131,12 @@ export default class AddItem extends Component {
             </div>
           )}
           <div className="flex-buttons-container">
-            <button type="button" onClick={this.props.history.goBack}>
-              Cancel
+            <button onClick={this.props.history.goBack} aria-label="Go Back">
+              <i class="fas fa-angle-double-left"></i> Back
             </button>
-            <button type="submit">Save</button>
+            <button type="submit" aria-label="Save">
+            <i class="fas fa-save"></i> Save
+            </button>
           </div>
         </form>
       </section>

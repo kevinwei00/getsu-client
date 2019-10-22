@@ -94,8 +94,9 @@ a {
 
 button {
   border-radius: 0.25rem;
-  border: 1px solid rgb(64, 64, 64);
-  background-color: white;
+  border: 1px solid lightgray;
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
 }
 
 button + button {
@@ -109,7 +110,6 @@ form {
 form button {
   width: 100%;
   font-size: 1.2rem;
-  font-weight: 600;
   padding: 0.75rem;
 }
 
@@ -122,4 +122,8 @@ form input {
 
 section header {
   text-align: center;
+}
+
+section header h1 {
+  font-weight: lighter;
 }

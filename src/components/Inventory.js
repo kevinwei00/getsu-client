@@ -147,7 +147,7 @@ export default class Inventory extends Component {
             onClick={() => this.props.history.push('/add-item')}
             aria-label="Add Item"
           >
-            +
+            <i class="fas fa-plus"></i>
           </button>
         </header>
         {content}

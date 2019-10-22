@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.625rem;
-  background-color: #fc0d1b;
+  background: linear-gradient(90deg,#07df00 0%, #09ff00 100%);
 }
 
 .AppNav__section {
@@ -22,15 +22,18 @@
 }
 
 .AppNav__username {
-  font-size: 0.75rem;
-  text-align: right;
+  text-align: center;
   margin-right: 1rem;
+  line-height: 1;
+  color: #fff;
+  text-shadow: rgb(64, 64, 64) 0.5px 0.5px;
 }
 
 .AppNav__logo {
   color: white;
   font-family: 'Viga', sans-serif;
   font-size: 1.5rem;
+  text-shadow: rgb(64, 64, 64) 0.5px 0.5px;
 }
 
 .flex-buttons-container {
@@ -40,7 +43,6 @@
 .flex-buttons-container button {
   width: 100%;
   font-size: 1.2rem;
-  font-weight: 600;
   padding: 0.75rem;
 }
 
