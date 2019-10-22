@@ -27,3 +27,8 @@
 .Inventory__list {
   width: 100%;
 }
+
+.Inventory__empty {
+  margin: 1rem 0;
+  color: #777;
+}
