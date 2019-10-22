@@ -170,13 +170,13 @@ export default class ItemDetail extends Component {
             <p />
             <div className="custom-form__buttons-container">
               <button onClick={this.props.history.goBack} aria-label="Go Back">
-                <i class="fas fa-angle-double-left"></i> Back
+                <i className="fas fa-angle-double-left"></i> Back
               </button>
               <button
                 onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}
                 aria-label="Delete Item"
               >
-                <i class="fas fa-trash"></i> Delete
+                <i className="fas fa-trash"></i> Delete
               </button>
             </div>
           </form>
