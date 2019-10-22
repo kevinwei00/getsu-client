@@ -121,7 +121,7 @@ export default class ItemDetail extends Component {
       if (this.state.currentItem.expiration_date) {
         const d = new Date(this.state.currentItem.expiration_date);
         expiration_display = (
-          <div>
+          <div className="custom-form__input-container">
             <b>Expires</b>
             <div>
               {`${d.getMonth() > 8 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)}
@@ -136,51 +136,55 @@ export default class ItemDetail extends Component {
           <header>
             <h1>{this.state.currentItem.item_name}</h1>
           </header>
-          <ProgressBar
-            expiration_date={`${this.state.currentItem.expiration_date}`}
-            now={Math.round(this.state.percent)}
-            label={`${this.state.local_quantity} / ${this.state.local_max_quantity} ${this.state.currentItem.unit_type}`}
-          />
-          <div>
-            <b>Quantity</b>
-            <div>
-              <NumericInput
-                placeholder="Quantity"
-                strict
-                min={0}
-                precision={2}
-                defaultValue={this.state.local_quantity}
-                onChange={this.handleChange}
-                style={{
-                  wrap: {
-                    fontSize: '1.4em',
-                  },
-                  input: {
-                    height: '64px',
-                    width: '256px',
-                    fontWeight: 100,
-                  },
-                  btn: {
-                    width: '32px',
-                  },
-                }}
+          <form className="custom-form">
+            <div className="custom-form__input-container">
+              <ProgressBar
+                expiration_date={`${this.state.currentItem.expiration_date}`}
+                now={Math.round(this.state.percent)}
+                label={`${this.state.local_quantity} / ${this.state.local_max_quantity} ${this.state.currentItem.unit_type}`}
               />
             </div>
-          </div>
-          <p />
-          {expiration_display}
-          <p />
-          <div className="flex-buttons-container">
-            <button onClick={this.props.history.goBack} aria-label="Go Back">
-              <i class="fas fa-angle-double-left"></i> Back
-            </button>
-            <button
-              onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}
-              aria-label="Delete Item"
-            >
-              <i class="fas fa-trash"></i> Delete
-            </button>
-          </div>
+            <div className="custom-form__input-container">
+              <b>Quantity</b>
+              <div>
+                <NumericInput
+                  placeholder="Quantity"
+                  strict
+                  min={0}
+                  precision={2}
+                  defaultValue={this.state.local_quantity}
+                  onChange={this.handleChange}
+                  style={{
+                    wrap: {
+                      fontSize: '1.4em',
+                    },
+                    input: {
+                      height: '64px',
+                      width: '256px',
+                      fontWeight: 100,
+                    },
+                    btn: {
+                      width: '32px',
+                    },
+                  }}
+                />
+              </div>
+            </div>
+            <p />
+            {expiration_display}
+            <p />
+            <div className="custom-form__buttons-container">
+              <button onClick={this.props.history.goBack} aria-label="Go Back">
+                <i class="fas fa-angle-double-left"></i> Back
+              </button>
+              <button
+                onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}
+                aria-label="Delete Item"
+              >
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </div>
+          </form>
         </section>
       );
     }

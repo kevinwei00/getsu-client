@@ -53,16 +53,18 @@ export default class Login extends Component {
             {error}
           </div>
         )}
-        <form className="Login__form" onSubmit={this.handleSubmitJwtAuth}>
-          <div className="user_name">
+        <form className="custom-form" onSubmit={this.handleSubmitJwtAuth}>
+          <div className="custom-form__input-container">
             <label htmlFor="user_name">User Name</label>
             <input required name="user_name" id="user_name"></input>
           </div>
-          <div className="password">
+          <div className="custom-form__input-container">
             <label htmlFor="password">Password</label>
             <input required name="password" type="password" id="password"></input>
           </div>
-          <button type="submit">Login</button>
+          <div className="custom-form__buttons-container">
+            <button type="submit">Login</button>
+          </div>
         </form>
       </section>
     );

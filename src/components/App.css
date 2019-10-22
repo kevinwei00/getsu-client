@@ -2,7 +2,8 @@
   Class Selector Globals
 ************************************************/
 
-.App__main {
+.App__main > section {
+  margin-top: 1rem;
 }
 
 .AppNav {
@@ -36,14 +37,28 @@
   text-shadow: rgb(64, 64, 64) 0.5px 0.5px;
 }
 
-.flex-buttons-container {
+.custom-form {
+  padding: 1rem;
+}
+
+.custom-form__buttons-container {
   display: flex;
 }
 
-.flex-buttons-container button {
+.custom-form__buttons-container button {
   width: 100%;
   font-size: 1.2rem;
   padding: 0.75rem;
+}
+
+.custom-form__input-container {
+  margin-bottom: 1.2rem;
+}
+
+.custom-form__input-container input {
+  line-height: 1.85;
+  padding: 0.35rem 0.7rem;
+  width: 100%;
 }
 
 .error-display {

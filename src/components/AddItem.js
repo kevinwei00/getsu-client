@@ -74,8 +74,8 @@ export default class AddItem extends Component {
         <header>
           <h1>Add Item</h1>
         </header>
-        <form className="AddItem__form" onSubmit={this.handleSubmit}>
-          <div>
+        <form className="custom-form" onSubmit={this.handleSubmit}>
+          <div className="custom-form__input-container">
             <label htmlFor="item_name">
               Name <RequiredField />
             </label>
@@ -87,7 +87,7 @@ export default class AddItem extends Component {
               required
             />
           </div>
-          <div>
+          <div className="custom-form__input-container">
             <label htmlFor="quantity">
               Quantity <RequiredField />
             </label>
@@ -100,7 +100,7 @@ export default class AddItem extends Component {
               required
             />
           </div>
-          <div>
+          <div className="custom-form__input-container">
             <label htmlFor="unit_type">Unit Type</label>
             <input
               type="text"
@@ -110,7 +110,7 @@ export default class AddItem extends Component {
               placeholder="e.g. units, cups, lbs, kg"
             />
           </div>
-          <div>
+          <div className="custom-form__input-container">
             <label htmlFor="toggle_expiration_date">Has Expiration Date</label>
             <input
               type="checkbox"
@@ -120,7 +120,7 @@ export default class AddItem extends Component {
             />
           </div>
           {this.state.toggle_expiration_date && (
-            <div>
+            <div className="custom-form__input-container">
               <label htmlFor="expiration_date">Expiration Date</label>
               <input
                 type="date"
@@ -130,12 +130,12 @@ export default class AddItem extends Component {
               />
             </div>
           )}
-          <div className="flex-buttons-container">
+          <div className="custom-form__buttons-container">
             <button onClick={this.props.history.goBack} aria-label="Go Back">
               <i class="fas fa-angle-double-left"></i> Back
             </button>
             <button type="submit" aria-label="Save">
-            <i class="fas fa-save"></i> Save
+              <i class="fas fa-save"></i> Save
             </button>
           </div>
         </form>

@@ -41,20 +41,22 @@ export default class Registration extends Component {
             {error}
           </div>
         )}
-        <form className="Registration__form" onSubmit={this.handleSubmit}>
-          <div className="user_name">
+        <form className="custom-form" onSubmit={this.handleSubmit}>
+          <div className="custom-form__input-container">
             <label htmlFor="user_name">
               User Name <RequiredField />
             </label>
             <input name="user_name" type="text" required id="user_name"></input>
           </div>
-          <div className="password">
+          <div className="custom-form__input-container">
             <label htmlFor="password">
               Password <RequiredField />
             </label>
             <input name="password" type="password" required id="password"></input>
           </div>
-          <button type="submit">Register</button>
+          <div className="custom-form__buttons-container">
+            <button type="submit">Register</button>
+          </div>
         </form>
       </section>
     );
