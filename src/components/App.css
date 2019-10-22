@@ -76,16 +76,16 @@
   animation: spinner 0.75s linear infinite;
 }
 @keyframes spinner {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+  100% {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
   }
 }
 
 .custom-select-wrapper {
   position: relative;
   margin: 1rem 0;
-  width: 52%;
+  width: 14rem;
 }
 
 .custom-select-wrapper select {
@@ -117,13 +117,13 @@
   border-radius: 2px;
   border-right: 0;
   border-top: 0;
-  content: " ";
-  height: .75rem;
-  width: .75rem;
+  content: ' ';
+  height: 0.75rem;
+  width: 0.75rem;
   position: absolute;
   pointer-events: none;
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  transform-origin: center;
 }
 
 .custom-select-wrapper select:hover {
