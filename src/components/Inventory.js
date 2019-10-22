@@ -115,17 +115,19 @@ export default class Inventory extends Component {
       content = (
         <>
           <div className="custom-select-wrapper">
-            <label htmlFor="sortby_options">Sort By</label>
-            <select
-              name="sortby_options"
-              id="sortby_options"
-              onChange={this.handleChange}
-              defaultValue={this.context.sortBy}
-            >
-              <option value={'expiration_date'}>Expiration Date</option>
-              <option value={'item_name'}>Name</option>
-              <option value={'quantity'}>Quantity</option>
-            </select>
+            <div className="custom-select-wrapper__arrow">
+              <label htmlFor="sortby_options">Sort By</label>
+              <select
+                name="sortby_options"
+                id="sortby_options"
+                onChange={this.handleChange}
+                defaultValue={this.context.sortBy}
+              >
+                <option value={'expiration_date'}>Expiration Date</option>
+                <option value={'item_name'}>Name</option>
+                <option value={'quantity'}>Quantity</option>
+              </select>
+            </div>
           </div>
           <ul className="Inventory__list">
             {sortedItems.map((item) => (
