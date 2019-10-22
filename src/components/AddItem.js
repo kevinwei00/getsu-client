@@ -131,7 +131,11 @@ export default class AddItem extends Component {
             </div>
           )}
           <div className="custom-form__buttons-container">
-            <button onClick={this.props.history.goBack} aria-label="Go Back">
+            <button
+              type="button"
+              onClick={this.props.history.goBack}
+              aria-label="Go Back"
+            >
               <i className="fas fa-angle-double-left"></i> Back
             </button>
             <button type="submit" aria-label="Save">
