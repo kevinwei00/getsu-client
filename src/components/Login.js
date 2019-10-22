@@ -44,8 +44,10 @@ export default class Login extends Component {
   render() {
     const { error } = this.state;
     return (
-      <div className="Login">
-        <h2>Login</h2>
+      <section className="Login">
+        <header>
+          <h1>Login</h1>
+        </header>
         <form className="Login__form" onSubmit={this.handleSubmitJwtAuth}>
           {error && (
             <div className="error-display" role="alert">
@@ -53,7 +55,7 @@ export default class Login extends Component {
             </div>
           )}
           <div className="user_name">
-            <label htmlFor="user_name">User name</label>
+            <label htmlFor="user_name">User Name</label>
             <input required name="user_name" id="user_name"></input>
           </div>
           <div className="password">
@@ -62,7 +64,7 @@ export default class Login extends Component {
           </div>
           <button type="submit">Login</button>
         </form>
-      </div>
+      </section>
     );
   }
 }

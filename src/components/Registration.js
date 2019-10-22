@@ -33,7 +33,9 @@ export default class Registration extends Component {
     const { error } = this.state;
     return (
       <section className="Registration">
-        <h2>Register</h2>
+        <header>
+          <h1>Register</h1>
+        </header>
         <form className="Registration__form" onSubmit={this.handleSubmit}>
           {error && (
             <div className="error-display" role="alert">

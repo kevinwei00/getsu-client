@@ -71,7 +71,9 @@ export default class AddItem extends Component {
   render() {
     return (
       <section className="AddItem">
-        <h1>Add Item</h1>
+        <header>
+          <h1>Add Item</h1>
+        </header>
         <form className="AddItem__form" onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="item_name">
@@ -128,7 +130,7 @@ export default class AddItem extends Component {
               />
             </div>
           )}
-          <div className="AddItem__form__buttons">
+          <div className="flex-buttons-container">
             <button type="button" onClick={this.props.history.goBack}>
               Cancel
             </button>

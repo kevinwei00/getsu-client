@@ -14,9 +14,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <>
         {this.context.hasAuthToken() ? <AppPrivate /> : <AppLanding />}
-      </div>
+      </>
     );
   }
 }

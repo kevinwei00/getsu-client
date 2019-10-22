@@ -1,3 +1,7 @@
+/***********************************************
+  CSS Reset
+************************************************/
+
 /* Box sizing rules */
 *,
 *::before,
@@ -36,7 +40,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -80,7 +84,42 @@ select {
   }
 }
 
-a,
-a:hover {
+/***********************************************
+  Selector Globals
+************************************************/
+
+a {
   text-decoration: none;
+}
+
+button {
+  border-radius: 0.25rem;
+  border: 1px solid rgb(64, 64, 64);
+  background-color: white;
+}
+
+button + button {
+  margin-left: 0.33rem;
+}
+
+form {
+  padding: 1rem;
+}
+
+form button {
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.75rem;
+}
+
+form input {
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+  padding: 0.35rem 0.7rem;
+  width: 100%;
+}
+
+section header {
+  text-align: center;
 }

@@ -4,6 +4,7 @@ import ItemContext from '../ItemContext';
 import ItemsApiService from '../services/items-api-service';
 import ExpirationsService from '../services/expirations-service';
 import Item from './Item';
+import './Inventory.css';
 
 export default class Inventory extends Component {
   static contextType = ItemContext;
@@ -103,13 +104,13 @@ export default class Inventory extends Component {
         </div>
       );
     } else if (this.context.items.length === 0) {
-      content = <div>Empty!</div>;
+      content = <div className="Inventory__empty">Nothing to display.</div>;
     } else {
       const sortedItems = this.handleSort([...this.context.items]);
       content = (
         <>
-          <div className="Inventory__sortby">
-            <label htmlFor="">Sort By</label>
+          <div className="custom-select-wrapper">
+            <label htmlFor="sortby_options">Sort By</label>
             <select
               name="sortby_options"
               id="sortby_options"
@@ -132,11 +133,16 @@ export default class Inventory extends Component {
 
     return (
       <section className="Inventory">
-        <header>
+        <header className="Inventory__header">
           <h1>Inventory</h1>
+          {/* <Link to="/add-item">+</Link> */}
+          <button
+            onClick={() => this.props.history.push('/add-item')}
+            aria-label="Add Item"
+          >
+            +
+          </button>
         </header>
-        {/* <Link to="/add-item">Add Item</Link> */}
-        <button onClick={() => this.props.history.push('/add-item')}>Add Item</button>
         {content}
       </section>
     );

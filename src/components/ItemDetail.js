@@ -108,7 +108,7 @@ export default class ItemDetail extends Component {
 
     if (error) {
       content = (
-        <div className="error-display"  role="alert">
+        <div className="error-display" role="alert">
           {error.message ? 'Internal Server Error' : error.error.message}
         </div>
       );
@@ -130,7 +130,9 @@ export default class ItemDetail extends Component {
       }
       content = (
         <section className="ItemDetail">
-          <h1>{this.state.currentItem.item_name}</h1>
+          <header>
+            <h1>{this.state.currentItem.item_name}</h1>
+          </header>
           <ProgressBar
             expiration_date={`${this.state.currentItem.expiration_date}`}
             now={Math.round(this.state.percent)}
@@ -165,10 +167,17 @@ export default class ItemDetail extends Component {
           <p />
           {expiration_display}
           <p />
-          <button onClick={this.props.history.goBack}>Go Back</button>
-          <button onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}>
-            Delete Item
-          </button>
+          <div className="flex-buttons-container">
+            <button onClick={this.props.history.goBack} aria-label="Go Back">
+              <i class="fas fa-angle-double-left"></i>
+            </button>
+            <button
+              onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}
+              aria-label="Delete Item"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
         </section>
       );
     }

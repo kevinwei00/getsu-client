@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import ItemContext from '../ItemContext';
-import './AppNav.css';
 import TokenService from '../services/token-service';
 
 class AppNav extends Component {
@@ -13,7 +12,7 @@ class AppNav extends Component {
       content = (
         <div className="AppNav__section">
           <button
-            className="AppNav__item"
+            className="AppNav__button"
             onClick={() => {
               this.props.history.push('/login');
             }}
@@ -21,7 +20,7 @@ class AppNav extends Component {
             Login
           </button>
           <button
-            className="AppNav__item"
+            className="AppNav__button"
             onClick={() => {
               this.props.history.push('/register');
             }}
@@ -33,9 +32,12 @@ class AppNav extends Component {
     } else {
       content = (
         <div className="AppNav__section">
-          Welcome, {TokenService.getCurrentUserName()}
+          <div className="AppNav__username">
+            <p>Welcome,</p>
+            {TokenService.getCurrentUserName()}
+          </div>
           <button
-            className="AppNav__item"
+            className="AppNav__button"
             onClick={() => {
               TokenService.clearCurrentUserName();
               TokenService.clearAuthToken();
@@ -57,7 +59,7 @@ class AppNav extends Component {
       <nav className="AppNav">
         <div className="AppNav__section">
           <Link to="/">
-            <div className="AppNav__logo AppNav__item">GETSU</div>
+            <div className="AppNav__logo">Getsu</div>
           </Link>
         </div>
         {content}

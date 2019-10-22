@@ -2,6 +2,11 @@
   list-style: none;
 }
 
+.Item + .Item,
+.Item:nth-child(1) {
+  margin-bottom: 1rem;
+}
+
 .Item__container {
-  margin: 1rem 1.5rem;
+  margin: 0 1.5rem;
 }
