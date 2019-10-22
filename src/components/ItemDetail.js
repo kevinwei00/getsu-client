@@ -54,7 +54,7 @@ export default class ItemDetail extends Component {
     ItemsApiService.deleteItemRequest(item_id)
       .then(() => {
         this.context.deleteItem(item_id);
-        this.props.history.goBack();
+        this.props.history.push('/', null);
       })
       .catch((error) => {
         this.context.setError(error);

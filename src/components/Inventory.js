@@ -21,9 +21,7 @@ export default class Inventory extends Component {
       })
       .then(() => {
         if (this.props.location.state) {
-          document
-            .getElementById(this.props.location.state.item_id)
-            .scrollIntoView({ behavior: 'smooth' });
+          document.getElementById(this.props.location.state.item_id).scrollIntoView();
         } else {
           document.querySelector('.AppNav').scrollIntoView();
         }
