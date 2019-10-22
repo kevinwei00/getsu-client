@@ -156,10 +156,10 @@ export default class ItemDetail extends Component {
                   onChange={this.handleChange}
                   style={{
                     input: {
-                      height: '64px',
+                      height: '3rem',
                     },
                     btn: {
-                      width: '32px',
+                      width: '1.5rem',
                     },
                   }}
                 />
