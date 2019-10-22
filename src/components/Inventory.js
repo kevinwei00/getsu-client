@@ -4,6 +4,7 @@ import ItemContext from '../ItemContext';
 import ItemsApiService from '../services/items-api-service';
 import ExpirationsService from '../services/expirations-service';
 import Item from './Item';
+import ScrollToTopButton from './ScrollToTopButton';
 import './Inventory.css';
 
 export default class Inventory extends Component {
@@ -11,6 +12,7 @@ export default class Inventory extends Component {
 
   state = {
     hasServerResponse: false,
+    hasScrolledOutOfView: false,
   };
 
   handleGetAllItems = () => {
@@ -88,12 +90,20 @@ export default class Inventory extends Component {
     }
   };
 
+  handleScroll = (e) => {
+    this.setState({
+      hasScrolledOutOfView: e.srcElement.scrollingElement.scrollTop >= 200 ? true : false,
+    });
+  };
+
   componentDidMount = () => {
     this.handleGetAllItems();
+    window.addEventListener('scroll', this.handleScroll);
   };
 
   componentWillUnmount = () => {
     this.context.clearItems();
+    window.removeEventListener('scroll', this.handleScroll);
   };
 
   render() {
@@ -158,6 +168,7 @@ export default class Inventory extends Component {
           </button>
         </header>
         {content}
+        {this.state.hasScrolledOutOfView ? <ScrollToTopButton /> : <></>}
       </section>
     );
   }
