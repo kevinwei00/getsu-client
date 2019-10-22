@@ -155,13 +155,8 @@ export default class ItemDetail extends Component {
                   defaultValue={this.state.local_quantity}
                   onChange={this.handleChange}
                   style={{
-                    wrap: {
-                      fontSize: '1.4em',
-                    },
                     input: {
                       height: '64px',
-                      width: '256px',
-                      fontWeight: 100,
                     },
                     btn: {
                       width: '32px',
