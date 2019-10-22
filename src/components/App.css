@@ -45,7 +45,14 @@
 }
 
 .error-display {
+  font-weight: bolder;
   color: red;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
 }
 
 .loading-display {

@@ -48,12 +48,12 @@ export default class Login extends Component {
         <header>
           <h1>Login</h1>
         </header>
+        {error && (
+          <div className="error-display" role="alert">
+            {error}
+          </div>
+        )}
         <form className="Login__form" onSubmit={this.handleSubmitJwtAuth}>
-          {error && (
-            <div className="error-display" role="alert">
-              {error}
-            </div>
-          )}
           <div className="user_name">
             <label htmlFor="user_name">User Name</label>
             <input required name="user_name" id="user_name"></input>

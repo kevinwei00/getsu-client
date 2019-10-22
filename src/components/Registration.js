@@ -36,12 +36,12 @@ export default class Registration extends Component {
         <header>
           <h1>Register</h1>
         </header>
+        {error && (
+          <div className="error-display" role="alert">
+            {error}
+          </div>
+        )}
         <form className="Registration__form" onSubmit={this.handleSubmit}>
-          {error && (
-            <div className="error-display" role="alert">
-              {error}
-            </div>
-          )}
           <div className="user_name">
             <label htmlFor="user_name">
               User Name <RequiredField />
