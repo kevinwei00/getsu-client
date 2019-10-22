@@ -171,7 +171,11 @@ export default class ItemDetail extends Component {
             <div className="custom-form__buttons-container">
               <button
                 type="button"
-                onClick={this.props.history.goBack}
+                onClick={() =>
+                  this.props.history.push('/', {
+                    item_id: this.state.currentItem.item_id,
+                  })
+                }
                 aria-label="Go Back"
               >
                 <i className="fas fa-angle-double-left"></i> Back

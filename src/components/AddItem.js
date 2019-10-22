@@ -54,7 +54,6 @@ export default class AddItem extends Component {
       unit_type: this.state.unit_type.value ? this.state.unit_type.value : 'units',
       expiration_date: this.state.expiration_date.value,
     };
-    console.log(newItem)
     this.handleCreateItem(newItem);
   };
 
@@ -62,7 +61,7 @@ export default class AddItem extends Component {
     ItemsApiService.createItemRequest(item)
       .then((item) => {
         this.context.addItem(item);
-        this.props.history.goBack();
+        this.props.history.push('/', { item_id: item.id });
       })
       .catch((error) => {
         this.context.setError(error);
@@ -134,7 +133,9 @@ export default class AddItem extends Component {
           <div className="custom-form__buttons-container">
             <button
               type="button"
-              onClick={this.props.history.goBack}
+              onClick={() =>
+                this.props.history.push('/', null)
+              }
               aria-label="Go Back"
             >
               <i className="fas fa-angle-double-left"></i> Back

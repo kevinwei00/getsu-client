@@ -19,6 +19,15 @@ export default class Inventory extends Component {
         this.setState({ hasServerResponse: true });
         this.context.fillItems(items);
       })
+      .then(() => {
+        if (this.props.location.state) {
+          document
+            .getElementById(this.props.location.state.item_id)
+            .scrollIntoView({ behavior: 'smooth' });
+        } else {
+          document.querySelector('.AppNav').scrollIntoView();
+        }
+      })
       .catch((error) => {
         this.context.setError(error);
       });
@@ -131,7 +140,7 @@ export default class Inventory extends Component {
           </div>
           <ul className="Inventory__list">
             {sortedItems.map((item) => (
-              <Item key={item.item_id} item={item} />
+              <Item key={item.item_id} id={item.item_id} item={item} />
             ))}
           </ul>
         </>

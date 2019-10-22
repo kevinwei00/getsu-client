@@ -7,7 +7,7 @@ export default class Item extends Component {
   render() {
     const { item } = this.props;
     return (
-      <li className="Item">
+      <li className="Item"  id={this.props.id}>
         <Link to={`/item/${item.item_id}`}>
           <div className="Item__container">
             {item.item_name}
