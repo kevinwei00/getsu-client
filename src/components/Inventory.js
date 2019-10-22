@@ -91,7 +91,12 @@ export default class Inventory extends Component {
 
   render() {
     if (!this.state.hasServerResponse) {
-      return <div className="Loading">Loading...</div>;
+      return (
+        <div className="loading-display">
+          <div className="loading-display__spinner"></div>
+          Loading...
+        </div>
+      );
     }
 
     const { error } = this.context;

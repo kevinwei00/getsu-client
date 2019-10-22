@@ -99,7 +99,12 @@ export default class ItemDetail extends Component {
 
   render() {
     if (!this.state.hasServerResponse) {
-      return <div className="Loading">Loading...</div>;
+      return (
+        <div className="loading-display">
+          <div className="loading-display__spinner"></div>
+          Loading...
+        </div>
+      );
     }
 
     const { error } = this.context;
@@ -112,8 +117,6 @@ export default class ItemDetail extends Component {
           {error.message ? 'Internal Server Error' : error.error.message}
         </div>
       );
-    } else if (!this.state.currentItem) {
-      content = <div>Could not retrieve item</div>;
     } else {
       if (this.state.currentItem.expiration_date) {
         const d = new Date(this.state.currentItem.expiration_date);
