@@ -39,7 +39,7 @@ export default class AddItem extends Component {
     this.setState({
       toggle_expiration_date: e.target.checked,
       expiration_date: {
-        value: e.target.value ? e.target.checked : null,
+        value: e.target.checked ? this.state.expiration_date.value : null,
         touched: !e.target.checked,
       },
     });
@@ -54,6 +54,7 @@ export default class AddItem extends Component {
       unit_type: this.state.unit_type.value ? this.state.unit_type.value : 'units',
       expiration_date: this.state.expiration_date.value,
     };
+    console.log(newItem)
     this.handleCreateItem(newItem);
   };
 
