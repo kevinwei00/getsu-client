@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.625rem;
-  background: linear-gradient(90deg,#cf70f6 0%,#2a67c9 100%);
+  background: linear-gradient(90deg, #cf70f6 0%, #2a67c9 100%);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
 }
 
@@ -63,6 +63,12 @@
   font-size: 1.2rem;
 }
 
+.custom-form__label {
+  border-bottom: 1px dotted currentColor;
+  display: inline-block;
+  line-height: 0.85;
+}
+
 .react-numeric-input {
   width: 100%;
 }
@@ -96,7 +102,7 @@
   border-right: 0.5rem solid transparent;
   border-radius: 100%;
   -webkit-animation: spinner 0.75s linear infinite;
-          animation: spinner 0.75s linear infinite;
+  animation: spinner 0.75s linear infinite;
 }
 
 @-webkit-keyframes spinner {
@@ -176,5 +182,5 @@
 }
 
 .call-to-action__themed {
-  background: linear-gradient(45deg,#cf70f6 0%,#cf70f6 30%, #755dfa 100%);
+  background: linear-gradient(45deg, #cf70f6 0%, #cf70f6 30%, #755dfa 100%);
 }

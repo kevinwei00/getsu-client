@@ -122,7 +122,7 @@ export default class ItemDetail extends Component {
         const d = new Date(this.state.currentItem.expiration_date);
         expiration_display = (
           <div className="custom-form__input-container">
-            <b>Expires</b>
+            <div className="custom-form__label">Expires</div>
             <div>
               {`${d.getMonth() > 8 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)}
               / ${d.getDate() > 9 ? d.getDate() : '0' + d.getDate()}
@@ -145,7 +145,7 @@ export default class ItemDetail extends Component {
               />
             </div>
             <div className="custom-form__input-container">
-              <b>Quantity</b>
+              <div className="custom-form__label">Quantity</div>
               <div>
                 <NumericInput
                   placeholder="Quantity"
