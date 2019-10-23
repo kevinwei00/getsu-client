@@ -38,40 +38,6 @@
   text-shadow: rgb(64, 64, 64) 0 0 4px;
 }
 
-.custom-form {
-  padding: 1rem;
-}
-
-.custom-form__buttons-container {
-  display: flex;
-}
-
-.custom-form__buttons-container button {
-  width: 100%;
-  padding: 0.75rem;
-}
-
-.custom-form__input-container {
-  margin-bottom: 1.2rem;
-}
-
-.custom-form__input-container input {
-  line-height: 1.85;
-  padding: 0.35rem 0.7rem;
-  width: 100%;
-}
-
-.custom-form__buttons-container,
-.custom-form__input-container {
-  font-size: 1.2rem;
-}
-
-.custom-form__label {
-  /* border-bottom: 1px dotted currentColor;
-  display: inline-block;
-  line-height: 0.85; */
-}
-
 .react-numeric-input {
   width: 100%;
 }
@@ -120,6 +86,49 @@
   }
 }
 
+.custom-form {
+  padding: 1rem;
+}
+
+.custom-form__buttons-container {
+  display: flex;
+}
+
+.custom-form__buttons-container button {
+  width: 100%;
+  padding: 0.75rem;
+}
+
+.custom-form__input-container {
+  margin-bottom: 1.2rem;
+}
+
+.custom-form__input-container input {
+  line-height: 1.85;
+  padding: 0.35rem 0.7rem;
+  width: 100%;
+}
+
+.custom-form__input-container input,
+.custom-select-wrapper select {
+  border: 1px solid lightgray;
+  border-radius: 0.25em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.custom-form__buttons-container,
+.custom-form__input-container {
+  font-size: 1.2rem;
+}
+
+/* .custom-form__label {
+  border-bottom: 1px dotted currentColor;
+  display: inline-block;
+  line-height: 0.85;
+} */
+
 .custom-select-wrapper {
   position: relative;
   margin: 1rem 0;
@@ -133,11 +142,6 @@
   padding: 0.5rem 0 0.5rem 4.5rem;
   width: 100%;
   margin: 0;
-  border: 1px solid lightgray;
-  border-radius: 0.25em;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
   cursor: pointer;
   outline: none;
 }
