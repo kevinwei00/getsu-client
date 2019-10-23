@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0.625rem;
-  background: #a560e8;
+  background: linear-gradient(90deg,#cf70f6 0%,#2a67c9 100%);
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
 }
 
@@ -24,15 +24,15 @@
 }
 
 .AppNav__username {
-  color: #343a40;
+  color: #191c1f;
   /* text-shadow: rgb(64, 64, 64) 0.5px 0.5px; */
 }
 
 .AppNav__logo {
-  color: #191c1f;
+  color: white;
   font-family: 'Viga', sans-serif;
-  font-size: 1.5rem;
-  /* text-shadow: rgb(64, 64, 64) 0.5px 0.5px; */
+  font-size: 2rem;
+  text-shadow: rgb(64, 64, 64) 0 0 4px;
 }
 
 .custom-form {
