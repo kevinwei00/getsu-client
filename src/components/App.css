@@ -21,11 +21,14 @@
 
 .AppNav__item + .AppNav__item {
   margin-left: 0.4rem;
+  color: white;
 }
 
-.AppNav__username {
-  color: #191c1f;
-  /* text-shadow: rgb(64, 64, 64) 0.5px 0.5px; */
+.AppNav__item a,
+.AppNav__username,
+.call-to-action--themed {
+  color: beige;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 0 4px;
 }
 
 .AppNav__logo {
