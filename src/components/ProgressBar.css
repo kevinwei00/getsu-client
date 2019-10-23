@@ -1,7 +1,7 @@
 .ProgressBar {
   display: flex;
   overflow: hidden;
-  background-color: #d6d6d6;
+  background-color: #e2e2e2;
   border-radius: .25rem;
   min-height: 2rem;
 }
@@ -17,7 +17,7 @@
 
 .ProgressBar__label {
   color: #fff;
-  text-shadow: black 0 0 2px;
+  text-shadow: black 0 0 2px, black 1px 1px 0;
   padding: 0 1rem;
 }
 

@@ -118,6 +118,7 @@
 }
 
 .custom-select-wrapper select {
+  background-color: rgb(250, 250, 250);
   color: #363636;
   line-height: 1.3;
   padding: 0.5rem 0 0.5rem 4.5rem;
