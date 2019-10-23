@@ -40,14 +40,17 @@ export default class Inventory extends Component {
   handleSort = (items) => {
     const maxDate = '9999-12-31T00:00:00.000Z';
 
+    // first sort items into buckets (empty items at the bottom)
     // sort by expiration date (expired first, non-perishable last)
     // then by percentage (lowest percentage first)
     // then by max quantity (lowest max_quantity first)
     if (this.context.sortBy === 'expiration_date') {
       const buckets = {};
-      ['expired', 'danger', 'warning', 'fresh', 'nonperishable'].forEach((key) => {
-        buckets[key] = [];
-      });
+      ['expired', 'danger', 'warning', 'fresh', 'nonperishable', 'empty'].forEach(
+        (key) => {
+          buckets[key] = [];
+        }
+      );
       items
         .sort(
           (itemA, itemB) =>
@@ -55,9 +58,13 @@ export default class Inventory extends Component {
             new Date(itemB.expiration_date || maxDate)
         )
         .forEach((item) => {
-          buckets[ExpirationsService.getExpirationString(item.expiration_date)].push(
-            item
-          );
+          if (item.quantity === 0) {
+            buckets['empty'].push(item);
+          } else {
+            buckets[ExpirationsService.getExpirationString(item.expiration_date)].push(
+              item
+            );
+          }
         });
       const bucketsArray = [];
       for (let key of Object.keys(buckets)) {
