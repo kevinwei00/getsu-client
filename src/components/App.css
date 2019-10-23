@@ -64,9 +64,9 @@
 }
 
 .custom-form__label {
-  border-bottom: 1px dotted currentColor;
+  /* border-bottom: 1px dotted currentColor;
   display: inline-block;
-  line-height: 0.85;
+  line-height: 0.85; */
 }
 
 .react-numeric-input {
