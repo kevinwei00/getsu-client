@@ -21,7 +21,7 @@ export default class ProgressBar extends Component {
           aria-valuemax="100"
           style={{ width: `${now}%` }}
         >
-          {label}
+          <div className="ProgressBar__label">{label}</div>
         </div>
       </div>
     );
