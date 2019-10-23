@@ -23,7 +23,8 @@
 }
 
 .Item__name {
-  color: #343a40;
+  color: black;
+  font-weight: 400;
 }
 
 .Item__progress-bar {
