@@ -11,22 +11,13 @@ class AppNav extends Component {
     if (!this.context.hasAuthToken()) {
       content = (
         <div className="AppNav__section">
-          <button
-            className="AppNav__button"
-            onClick={() => {
-              this.props.history.push('/login');
-            }}
-          >
-            Login
-          </button>
-          <button
-            className="AppNav__button"
-            onClick={() => {
-              this.props.history.push('/register');
-            }}
-          >
-            Register
-          </button>
+          <div className="AppNav__item">
+            <Link to="/login">Log in</Link>
+          </div>
+          <div className="AppNav__item">|</div>
+          <div className="AppNav__item">
+            <Link to="/register">Register</Link>
+          </div>
         </div>
       );
     } else {
