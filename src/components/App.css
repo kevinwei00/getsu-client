@@ -174,3 +174,7 @@
 .call-to-action__gray {
   background-color: rgb(250, 250, 250);
 }
+
+.call-to-action__themed {
+  background: linear-gradient(45deg,#cf70f6 0%,#cf70f6 30%, #2a67c9 100%);
+}
