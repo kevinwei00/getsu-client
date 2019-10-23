@@ -10,7 +10,7 @@ export default class ScrollToTopButton extends Component {
     return (
       <button
         type="button"
-        className="ScrollToTopButton call-to-action__themed"
+        className="ScrollToTopButton call-to-action--themed"
         onClick={this.scrollToTop}
         aria-label="Back to Top"
       >
