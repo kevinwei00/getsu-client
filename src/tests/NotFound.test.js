@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import NotFound from '../components/NotFound';
 
-describe('<App />', () => {
+describe('<NotFound />', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+    ReactDOM.render(<NotFound />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
