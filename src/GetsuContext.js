@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-const ItemContext = React.createContext({
+const GetsuContext = React.createContext({
   // items: [],
   // fillItems: () => {},
   // addItem: () => {},
 });
 
-export default ItemContext;
+export default GetsuContext;
 
-export class ItemProvider extends Component {
+export class GetsuContextProvider extends Component {
   state = {
     items: [],
     error: null,
@@ -88,9 +88,9 @@ export class ItemProvider extends Component {
       getItem: this.getItem,
     };
     return (
-      <ItemContext.Provider value={contextValue}>
+      <GetsuContext.Provider value={contextValue}>
         {this.props.children}
-      </ItemContext.Provider>
+      </GetsuContext.Provider>
     );
   }
 }

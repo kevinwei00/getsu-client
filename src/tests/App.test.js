@@ -5,7 +5,7 @@ import AppNav from '../components/AppNav';
 import AppLanding from '../components/AppLanding';
 import AppPrivate from '../components/AppPrivate';
 import { MemoryRouter } from 'react-router-dom';
-import { ItemProvider } from '../ItemContext';
+import { GetsuContextProvider } from '../GetsuContext';
 import TokenService from '../services/token-service';
 
 describe('<App />', () => {
@@ -13,9 +13,9 @@ describe('<App />', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <MemoryRouter>
-        <ItemProvider>
+        <GetsuContextProvider>
           <App />
-        </ItemProvider>
+        </GetsuContextProvider>
       </MemoryRouter>,
       div
     );
@@ -28,9 +28,9 @@ describe('<AppNav />', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <MemoryRouter>
-        <ItemProvider>
+        <GetsuContextProvider>
           <AppNav />
-        </ItemProvider>
+        </GetsuContextProvider>
       </MemoryRouter>,
       div
     );
@@ -43,9 +43,9 @@ describe('<AppLanding />', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <MemoryRouter>
-        <ItemProvider>
+        <GetsuContextProvider>
           <AppLanding />
-        </ItemProvider>
+        </GetsuContextProvider>
       </MemoryRouter>,
       div
     );
@@ -58,9 +58,9 @@ describe('<AppPrivate />', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <MemoryRouter>
-        <ItemProvider>
+        <GetsuContextProvider>
           <AppPrivate />
-        </ItemProvider>
+        </GetsuContextProvider>
       </MemoryRouter>,
       div
     );

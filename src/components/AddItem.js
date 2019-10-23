@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ItemContext from '../ItemContext';
+import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
 import RequiredField from './RequiredField';
 import Switch from './Switch';
 
 export default class AddItem extends Component {
-  static contextType = ItemContext;
+  static contextType = GetsuContext;
 
   state = {
     toggle_expiration_date: false,

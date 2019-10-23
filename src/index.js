@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './components/App';
-import { ItemProvider } from './ItemContext';
+import { GetsuContextProvider } from './GetsuContext';
 
 ReactDOM.render(
   <BrowserRouter>
-    <ItemProvider>
+    <GetsuContextProvider>
       <App />
-    </ItemProvider>
+    </GetsuContextProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

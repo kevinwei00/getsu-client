@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import ItemContext from '../ItemContext';
+import GetsuContext from '../GetsuContext';
 import TokenService from '../services/token-service';
 
 class AppNav extends Component {
-  static contextType = ItemContext;
+  static contextType = GetsuContext;
 
   render() {
     let content;

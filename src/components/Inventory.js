@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import ItemContext from '../ItemContext';
+import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
 import ExpirationsService from '../services/expirations-service';
 import Item from './Item';
@@ -8,7 +8,7 @@ import ScrollToTopButton from './ScrollToTopButton';
 import './Inventory.css';
 
 export default class Inventory extends Component {
-  static contextType = ItemContext;
+  static contextType = GetsuContext;
 
   state = {
     hasServerResponse: false,

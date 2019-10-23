@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ItemContext from '../ItemContext';
+import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
 import NumericInput from 'react-numeric-input';
 import ProgressBar from './ProgressBar';
 
 export default class ItemDetail extends Component {
-  static contextType = ItemContext;
+  static contextType = GetsuContext;
 
   state = {
     hasServerResponse: false,

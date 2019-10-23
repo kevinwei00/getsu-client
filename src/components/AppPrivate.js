@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import ItemContext from '../ItemContext';
+import GetsuContext from '../GetsuContext';
 import AppNav from './AppNav';
 import Inventory from './Inventory';
 import ItemDetail from './ItemDetail';
@@ -9,7 +9,7 @@ import UsageHistory from './UsageHistory';
 import NotFound from './NotFound';
 
 export default class AppPrivate extends Component {
-  static contextType = ItemContext;
+  static contextType = GetsuContext;
 
   render() {
     return (
