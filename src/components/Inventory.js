@@ -105,8 +105,9 @@ export default class Inventory extends Component {
   };
 
   handleScroll = (e) => {
+    // console.log(e.srcElement.scrollingElement.scrollTop);
     this.setState({
-      hasScrolledOutOfView: e.srcElement.scrollingElement.scrollTop >= 200 ? true : false,
+      hasScrolledOutOfView: e.srcElement.scrollingElement.scrollTop >= 300 ? true : false,
     });
   };
 
