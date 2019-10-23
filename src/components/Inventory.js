@@ -162,7 +162,7 @@ export default class Inventory extends Component {
           </div>
           <ul className="Inventory__list">
             {sortedItems.map((item) => (
-              <Item key={item.item_id} id={item.item_id} item={item} />
+              <Item key={item.item_id} item={item} />
             ))}
           </ul>
         </>
