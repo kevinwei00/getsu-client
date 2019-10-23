@@ -158,15 +158,20 @@ export default class ItemDetail extends Component {
                     input: {
                       height: '3rem',
                     },
+                    'input:not(.form-control)': {
+                      borderRadius: '0.25rem',
+                    },
                     btn: {
-                      background: 'rgb(250, 250, 250)',
+                      background: 'rgb(226, 226, 226)',
                       width: '2rem',
                     },
                     'btnUp.mobile': {
                       width: '4rem',
+                      borderRadius: '0.25rem',
                     },
                     'btnDown.mobile': {
                       width: '4rem',
+                      borderRadius: '0.25rem',
                     },
                   }}
                 />

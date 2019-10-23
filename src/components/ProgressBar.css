@@ -1,8 +1,8 @@
 .ProgressBar {
   display: flex;
   overflow: hidden;
-  background-color: #e2e2e2;
-  border-radius: .25rem;
+  background-color: rgb(226, 226, 226);
+  border-radius: 0.25rem;
   min-height: 2rem;
 }
 
