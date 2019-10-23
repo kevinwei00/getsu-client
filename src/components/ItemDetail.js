@@ -159,7 +159,14 @@ export default class ItemDetail extends Component {
                       height: '3rem',
                     },
                     btn: {
-                      width: '1.5rem',
+                      background: 'rgb(250, 250, 250)',
+                      width: '2rem',
+                    },
+                    'btnUp.mobile': {
+                      width: '4rem',
+                    },
+                    'btnDown.mobile': {
+                      width: '4rem',
                     },
                   }}
                 />

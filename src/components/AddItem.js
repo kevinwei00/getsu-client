@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ItemContext from '../ItemContext';
 import ItemsApiService from '../services/items-api-service';
 import RequiredField from './RequiredField';
+import Switch from './Switch';
 
 export default class AddItem extends Component {
   static contextType = ItemContext;
@@ -111,12 +112,12 @@ export default class AddItem extends Component {
             />
           </div>
           <div className="custom-form__input-container">
-            <label htmlFor="toggle_expiration_date">Has Expiration Date</label>
-            <input
-              type="checkbox"
-              name="toggle_expiration_date"
-              id="toggle_expiration_date"
-              onChange={this.handleToggleExpirationDate}
+            <div>Has Expiration Date</div>
+            <Switch
+              identifier={`toggle_expiration_date`}
+              isOn={this.state.toggle_expiration_date}
+              onColor="#06D6A0"
+              handleToggle={this.handleToggleExpirationDate}
             />
           </div>
           {this.state.toggle_expiration_date && (

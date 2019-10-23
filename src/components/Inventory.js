@@ -162,7 +162,7 @@ export default class Inventory extends Component {
           {/* <Link to="/add-item">+</Link> */}
           <button
             type="button"
-            className="call-to-action__green--alt"
+            className="Inventory__add-button call-to-action__green"
             onClick={() => this.props.history.push('/add-item')}
             aria-label="Add Item"
           >

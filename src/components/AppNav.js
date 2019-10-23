@@ -32,25 +32,26 @@ class AppNav extends Component {
     } else {
       content = (
         <div className="AppNav__section">
-          <div className="AppNav__username">
-            <p>Welcome,</p>
+          <div className="AppNav__item AppNav__username">
             {TokenService.getCurrentUserName()}
           </div>
-          <button
-            className="AppNav__button"
-            onClick={() => {
-              TokenService.clearCurrentUserName();
-              TokenService.clearAuthToken();
-              this.context.clearAuthToken();
-              this.context.clearItems();
-              this.context.resetSortBy();
-              this.props.history.push('/');
-            }}
-          >
-            Logout
-          </button>
-          {/* <button onClick={() => this.props.history.push('/')}>Inventory</button>
-        <button>History</button> */}
+          <div className="AppNav__item">
+            <i className="fas fa-caret-right"></i>
+          </div>
+          <div className="AppNav__item">
+            <Link
+              to="/"
+              onClick={() => {
+                TokenService.clearCurrentUserName();
+                TokenService.clearAuthToken();
+                this.context.clearAuthToken();
+                this.context.clearItems();
+                this.context.resetSortBy();
+              }}
+            >
+              Log out
+            </Link>
+          </div>
         </div>
       );
     }
