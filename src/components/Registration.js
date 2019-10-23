@@ -55,7 +55,9 @@ export default class Registration extends Component {
             <input name="password" type="password" required id="password"></input>
           </div>
           <div className="custom-form__buttons-container">
-            <button type="submit">Register</button>
+            <button type="submit" className="call-to-action__green">
+              Register
+            </button>
           </div>
         </form>
       </section>

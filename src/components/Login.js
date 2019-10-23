@@ -63,7 +63,9 @@ export default class Login extends Component {
             <input required name="password" type="password" id="password"></input>
           </div>
           <div className="custom-form__buttons-container">
-            <button type="submit">Login</button>
+            <button type="submit" className="call-to-action__green">
+              Login
+            </button>
           </div>
         </form>
       </section>

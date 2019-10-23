@@ -10,7 +10,8 @@
   display: flex;
   justify-content: space-between;
   padding: 0.625rem;
-  background: linear-gradient(90deg, #07df00 0%, #09ff00 100%);
+  background: #b8e986;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
 }
 
 .AppNav__section {
@@ -26,15 +27,15 @@
   text-align: center;
   margin-right: 1rem;
   line-height: 1;
-  color: #fff;
-  text-shadow: rgb(64, 64, 64) 0.5px 0.5px;
+  color: #343a40;
+  /* text-shadow: rgb(64, 64, 64) 0.5px 0.5px; */
 }
 
 .AppNav__logo {
-  color: white;
+  color: #191c1f;
   font-family: 'Viga', sans-serif;
   font-size: 1.5rem;
-  text-shadow: rgb(64, 64, 64) 0.5px 0.5px;
+  /* text-shadow: rgb(64, 64, 64) 0.5px 0.5px; */
 }
 
 .custom-form {
@@ -156,4 +157,20 @@
 }
 .custom-select-wrapper__arrow:hover:after {
   border-color: #363636;
+}
+
+.call-to-action__green {
+  background-color: #bff199;
+}
+
+.call-to-action__green--alt {
+  background-color: #b8e986;
+}
+
+.call-to-action__red {
+  background-color: #f7c8c9;
+}
+
+.call-to-action__gray {
+  background-color: #d3d3d3;
 }

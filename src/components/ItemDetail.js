@@ -171,6 +171,7 @@ export default class ItemDetail extends Component {
             <div className="custom-form__buttons-container">
               <button
                 type="button"
+                className="call-to-action__gray"
                 onClick={() =>
                   this.props.history.push('/', {
                     item_id: this.state.currentItem.item_id,
@@ -182,6 +183,7 @@ export default class ItemDetail extends Component {
               </button>
               <button
                 type="button"
+                className="call-to-action__red"
                 onClick={() => this.handleDeleteItem(this.state.currentItem.item_id)}
                 aria-label="Delete Item"
               >

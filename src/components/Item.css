@@ -9,4 +9,16 @@
 
 .Item__container {
   margin: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Item__name {
+  color: #343a40;
+  font-weight: bolder;
+}
+
+.Item__progress-bar {
+  margin-left: 0.3rem;
+  width: 100%;
 }

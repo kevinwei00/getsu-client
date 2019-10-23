@@ -18,19 +18,19 @@
 }
 
 .ProgressBar__inner--nonperishable {
-  background-color: #007bff;
+  background-color: #1cb0f6;
 }
 
 .ProgressBar__inner--fresh {
-  background-color: #28a745;
+  background-color: #7ac70c;
 }
 
 .ProgressBar__inner--warning {
-  background-color: #ffc107;
+  background-color: #ffc715;
 }
 
 .ProgressBar__inner--danger {
-  background-color: #dc3545;
+  background-color: #e53838;
 }
 
 .ProgressBar__inner--expired {
