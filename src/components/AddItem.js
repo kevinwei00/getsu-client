@@ -69,6 +69,10 @@ export default class AddItem extends Component {
       });
   };
 
+  componentDidMount = () => {
+    document.querySelector('.AppNav').scrollIntoView();
+  }
+
   render() {
     return (
       <section className="AddItem">

@@ -91,6 +91,7 @@ export default class ItemDetail extends Component {
   componentDidMount = () => {
     window.addEventListener('beforeunload', this.handleWindowClose);
     this.handleGetItem(this.props.match.params.item_id);
+    document.querySelector('.AppNav').scrollIntoView();
   };
 
   componentWillUnmount = () => {

@@ -295,6 +295,10 @@
   html {
     font-size: 150%;
   }
+
+  .App__main section {
+    max-width: 30rem;
+  }
 }
 
 @media screen and (min-width: 1025px) {
