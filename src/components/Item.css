@@ -25,6 +25,7 @@
 .Item__name {
   color: black;
   font-weight: 400;
+  overflow: hidden;
 }
 
 .Item__progress-bar {
