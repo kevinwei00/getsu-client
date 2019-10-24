@@ -2,7 +2,8 @@
   height: 0;
   width: 0;
   visibility: hidden;
-  position: absolute;
+  display: block;
+  margin-top: -0.8rem;
 }
 
 .Switch__label {
