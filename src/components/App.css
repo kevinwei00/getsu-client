@@ -1,13 +1,23 @@
 /***********************************************
-  Class Selector Globals
+  Global heights
 ************************************************/
+
+#root {
+  height: 100vh;
+}
+
+.App__main,
+.App__main section {
+  height: 100%;
+}
 
 /***********************************************
   App
 ************************************************/
 
-.App__main > section {
-  margin-top: 1rem;
+.App__main section {
+  margin: 0 auto;
+  padding-top: 1rem;
 }
 
 .AppNav {
@@ -23,6 +33,10 @@
   align-items: center;
 }
 
+.AppNav__item {
+  white-space: nowrap;
+}
+
 .AppNav__item + .AppNav__item {
   margin-left: 0.4rem;
   color: white;
@@ -36,32 +50,77 @@
 }
 
 .AppNav__logo {
-  width: 128px;
+  width: 8rem;
   -webkit-filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
   margin: 0.65rem 0;
 }
 
-.AppLanding {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.AppLanding > header {
+  height: fit-content;
+  margin-bottom: 2px;
 }
 
-.AppLanding__section {
-  font-family: 'Sawarabi Gothic', sans-serif;
+.AppLanding__features {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.AppLanding__features__text {
+  width: 70%;
+  text-align: center;
+}
+
+/* Features bottom border */
+.AppLanding__features:nth-child(2)::after,
+.AppLanding__features:nth-child(3)::after,
+.AppLanding__features:nth-child(4)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  height: 1px;
+  width: 40%;
+}
+
+.AppLanding__features:nth-child(even) .yabai-badge {
+  right: 0;
+  -webkit-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+
+.AppLanding__features:nth-child(odd) .yabai-badge {
+  left: 0;
+  -webkit-transform: rotate(-10deg);
+  transform: rotate(-10deg);
 }
 
 /***********************************************
   Misc
 ************************************************/
 
+.yabai-badge {
+  position: absolute;
+  top: 0;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-weight: bolder;
+  color: beige;
+  background-color: rgb(255, 64, 64);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  padding: 0.2rem 0.2rem 0.2rem 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .react-numeric-input {
   width: 100%;
 }
 
 .error-display {
-  font-weight: bolder;
   color: red;
   text-align: center;
   display: flex;
@@ -221,4 +280,34 @@
 
 .call-to-action--themed {
   background: linear-gradient(45deg, #cf70f6 0%, #cf70f6 30%, #755dfa 100%);
+}
+
+/***********************************************
+  Progressive Enhancement
+************************************************/
+
+@media screen and (min-width: 320px) {
+  .App__main section {
+    max-width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .AppLanding__features:nth-child(even) .yabai-badge {
+    right: 14%;
+  }
+  
+  .AppLanding__features:nth-child(odd) .yabai-badge {
+    left: 14%;
+  }
+
+  html {
+    font-size: 150%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .App__main section {
+    max-width: 40rem;
+  }
 }

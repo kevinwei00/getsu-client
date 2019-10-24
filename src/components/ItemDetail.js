@@ -161,6 +161,7 @@ export default class ItemDetail extends Component {
                     },
                     'input:not(.form-control)': {
                       borderRadius: '0.25rem',
+                      padding: '0.35rem 0.7rem',
                     },
                     btn: {
                       background: 'rgb(226, 226, 226)',

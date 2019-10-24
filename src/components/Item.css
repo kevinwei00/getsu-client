@@ -8,6 +8,7 @@
 }
 
 .Item:hover {
+  padding: 0 1rem;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1),
     1px 0 0 rgba(0, 0, 0, 0.1), -1px 0 0 rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -18,7 +19,6 @@
 }
 
 .Item__container {
-  margin: 0 1.5rem;
   padding-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,6 @@
 
 .Item__name {
   color: black;
-  font-weight: 400;
   overflow: hidden;
 }
 

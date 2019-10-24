@@ -75,9 +75,19 @@ select {
   Selector Globals
 ************************************************/
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: 'Signika', sans-serif;
   background-color: beige;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
 }
 
 a {
@@ -109,10 +119,7 @@ button + button {
 
 section header {
   text-align: center;
-}
-
-section header h1 {
-  font-weight: 400;
   padding: 0 1rem;
   overflow: hidden;
+  min-height: fit-content;
 }

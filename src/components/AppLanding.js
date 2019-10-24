@@ -9,9 +9,29 @@ export default class AppLanding extends Component {
     const LandingPage = (
       <section className="AppLanding">
         <header>
-          <h1>Landing Page</h1>
+          <h1>
+            Easily track your
+            <br />
+            inventory with Getsu.
+          </h1>
         </header>
-        <div className="AppLanding__section">やばい！</div>
+        <div className="AppLanding__features">
+          <div className="AppLanding__features__text">Some cool feature!</div>
+        </div>
+        <div className="AppLanding__features">
+          <div className="yabai-badge">やばい！</div>
+          <div className="AppLanding__features__text">Some cool feature!</div>
+        </div>
+        <div className="AppLanding__features">
+          <div className="yabai-badge">やばい！</div>
+          <div className="AppLanding__features__text">
+            Some long sentence and a dog l to a cat lay on!
+          </div>
+        </div>
+        <div className="AppLanding__features">
+          <div className="yabai-badge">やばい！</div>
+          <div className="AppLanding__features__text">Some cool feature!</div>
+        </div>
       </section>
     );
 
