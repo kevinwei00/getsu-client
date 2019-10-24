@@ -84,6 +84,11 @@ a {
   text-decoration: none;
 }
 
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
 button {
   color: #343a40;
   border-radius: 0.25rem;
@@ -93,7 +98,8 @@ button {
   transition: all 0.1s ease-in-out;
 }
 
-button:hover {
+button:hover,
+button:active {
   box-shadow: 0 0 3px rgb(0, 0, 0);
 }
 

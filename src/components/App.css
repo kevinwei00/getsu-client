@@ -169,7 +169,6 @@
   width: 100%;
   margin: 0;
   cursor: pointer;
-  outline: none;
 }
 
 .custom-select-wrapper label {
@@ -195,7 +194,8 @@
   transform: rotate(-45deg);
 }
 
-.custom-select-wrapper select:hover {
+.custom-select-wrapper select:hover,
+.custom-select-wrapper select:active {
   border-color: darkgray;
 }
 
