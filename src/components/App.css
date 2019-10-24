@@ -62,7 +62,7 @@
 }
 
 .AppLanding__features {
-  height: 20vh;
+  height: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +70,6 @@
 }
 
 .AppLanding__features__text {
-  width: 70%;
   text-align: center;
 }
 
@@ -83,7 +82,7 @@
   bottom: 0;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
   height: 1px;
-  width: 40%;
+  width: 50%;
 }
 
 .AppLanding__features:nth-child(even) .yabai-badge {
@@ -283,7 +282,7 @@
 }
 
 /***********************************************
-  Progressive Enhancement
+  Media Queries
 ************************************************/
 
 @media screen and (min-width: 320px) {
@@ -293,14 +292,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .AppLanding__features:nth-child(even) .yabai-badge {
-    right: 14%;
-  }
-  
-  .AppLanding__features:nth-child(odd) .yabai-badge {
-    left: 14%;
-  }
-
   html {
     font-size: 150%;
   }
