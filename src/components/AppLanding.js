@@ -7,11 +7,12 @@ import NotFound from './NotFound';
 export default class AppLanding extends Component {
   render() {
     const LandingPage = (
-      <>
+      <section className="AppLanding">
         <header>
           <h1>Landing Page</h1>
         </header>
-      </>
+        <div className="AppLanding__section">やばい！</div>
+      </section>
     );
 
     return (

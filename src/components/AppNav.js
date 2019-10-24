@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import GetsuContext from '../GetsuContext';
 import TokenService from '../services/token-service';
+import GetsuLogo from '../assets/GetsuLogo.svg';
 
 class AppNav extends Component {
   static contextType = GetsuContext;
@@ -51,7 +52,9 @@ class AppNav extends Component {
       <nav className="AppNav">
         <div className="AppNav__section">
           <Link to="/">
-            <div className="AppNav__logo">Getsu</div>
+            <div className="AppNav__logo">
+              <img src={GetsuLogo} alt="Getsu Logo" />
+            </div>
           </Link>
         </div>
         {content}

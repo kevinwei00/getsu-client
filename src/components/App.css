@@ -2,6 +2,10 @@
   Class Selector Globals
 ************************************************/
 
+/***********************************************
+  App
+************************************************/
+
 .App__main > section {
   margin-top: 1rem;
 }
@@ -32,11 +36,24 @@
 }
 
 .AppNav__logo {
-  color: white;
-  font-family: 'Viga', sans-serif;
-  font-size: 2rem;
-  text-shadow: rgb(64, 64, 64) 0 0 4px;
+  width: 117px;
+  -webkit-filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
+
+.AppLanding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AppLanding__section {
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
+
+/***********************************************
+  Misc
+************************************************/
 
 .react-numeric-input {
   width: 100%;
@@ -86,6 +103,10 @@
   }
 }
 
+/***********************************************
+  Custom Form
+************************************************/
+
 .custom-form {
   padding: 1rem;
 }
@@ -128,6 +149,10 @@
   display: inline-block;
   line-height: 0.85;
 } */
+
+/***********************************************
+  Custom Select
+************************************************/
 
 .custom-select-wrapper {
   position: relative;
@@ -172,9 +197,14 @@
 .custom-select-wrapper select:hover {
   border-color: darkgray;
 }
+
 .custom-select-wrapper__arrow:hover:after {
   border-color: #363636;
 }
+
+/***********************************************
+  Call to action
+************************************************/
 
 .call-to-action--green {
   background-color: #bff199;
