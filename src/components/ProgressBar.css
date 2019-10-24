@@ -27,7 +27,7 @@
 }
 
 .ProgressBar__inner--fresh {
-  background: linear-gradient(90deg, rgb(122, 199, 12) 0%, rgba(122, 199, 12, 0.7) 100%);
+  background: linear-gradient(90deg, rgb(12, 199, 90) 0%, rgba(12, 199, 90, 0.7) 100%);
 }
 
 .ProgressBar__inner--warning {
