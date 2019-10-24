@@ -81,6 +81,7 @@ export default class AddItem extends Component {
               Name <RequiredField />
             </label>
             <input
+              className="custom-form__input"
               type="text"
               name="item_name"
               id="item_name"
@@ -93,6 +94,7 @@ export default class AddItem extends Component {
               Quantity <RequiredField />
             </label>
             <input
+              className="custom-form__input"
               type="number"
               step="any"
               name="quantity"
@@ -104,6 +106,7 @@ export default class AddItem extends Component {
           <div className="custom-form__input-container">
             <label htmlFor="unit_type">Unit Type</label>
             <input
+              className="custom-form__input"
               type="text"
               name="unit_type"
               id="unit_type"
@@ -114,6 +117,7 @@ export default class AddItem extends Component {
           <div className="custom-form__input-container">
             <div>Has Expiration Date</div>
             <Switch
+              additionalClass="custom-form__input"
               identifier={`toggle_expiration_date`}
               isOn={this.state.toggle_expiration_date}
               onColor="#06D6A0"
@@ -124,6 +128,7 @@ export default class AddItem extends Component {
             <div className="custom-form__input-container">
               <label htmlFor="expiration_date">Expiration Date</label>
               <input
+                className="custom-form__input--expiration-date"
                 type="date"
                 name="expiration_date"
                 id="expiration_date"

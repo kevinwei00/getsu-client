@@ -148,6 +148,7 @@ export default class ItemDetail extends Component {
               <div className="custom-form__label">Quantity</div>
               <div>
                 <NumericInput
+                  className="custom-form__input"
                   placeholder="Quantity"
                   strict
                   min={0}

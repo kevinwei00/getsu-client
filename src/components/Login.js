@@ -56,11 +56,23 @@ export default class Login extends Component {
         <form className="custom-form" onSubmit={this.handleSubmitJwtAuth}>
           <div className="custom-form__input-container">
             <label htmlFor="user_name">User Name</label>
-            <input required name="user_name" id="user_name"></input>
+            <input
+              className="custom-form__input"
+              name="user_name"
+              type="text"
+              id="user_name"
+              required
+            ></input>
           </div>
           <div className="custom-form__input-container">
             <label htmlFor="password">Password</label>
-            <input required name="password" type="password" id="password"></input>
+            <input
+              className="custom-form__input"
+              name="password"
+              type="password"
+              id="password"
+              required
+            ></input>
           </div>
           <div className="custom-form__buttons-container">
             <button type="submit" className="call-to-action--themed">

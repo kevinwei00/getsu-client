@@ -46,13 +46,25 @@ export default class Registration extends Component {
             <label htmlFor="user_name">
               User Name <RequiredField />
             </label>
-            <input name="user_name" type="text" required id="user_name"></input>
+            <input
+              className="custom-form__input"
+              name="user_name"
+              type="text"
+              id="user_name"
+              required
+            ></input>
           </div>
           <div className="custom-form__input-container">
             <label htmlFor="password">
               Password <RequiredField />
             </label>
-            <input name="password" type="password" required id="password"></input>
+            <input
+              className="custom-form__input"
+              name="password"
+              type="password"
+              id="password"
+              required
+            ></input>
           </div>
           <div className="custom-form__buttons-container">
             <button type="submit" className="call-to-action--themed">
