@@ -51,50 +51,56 @@
 
 .AppNav__logo {
   width: 8rem;
-  -webkit-filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
-  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+  -webkit-filter: drop-shadow(0 0 4px rgba(0, 0, 96, 0.4));
+  filter: drop-shadow(0 0 4px rgba(0, 0, 96, 0.4));
   margin: 0.65rem 0;
 }
 
 .AppLanding > header {
-  height: fit-content;
-  margin-bottom: 2px;
+  margin-bottom: 1rem;
 }
 
 .AppLanding__features {
-  height: 7rem;
   display: flex;
-  align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 1rem;
 }
 
 .AppLanding__features__text {
-  text-align: center;
+  font-size: 1.2rem;
+  margin: 2.5rem 1rem 1.25rem 1rem;
 }
 
-/* Features bottom border */
+.AppLanding__demo-button > button {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+/* Features top border */
 .AppLanding__features:nth-child(2)::after,
 .AppLanding__features:nth-child(3)::after,
 .AppLanding__features:nth-child(4)::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  top: 0;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
   height: 1px;
   width: 50%;
 }
 
 .AppLanding__features:nth-child(even) .yabai-badge {
-  right: 0;
-  -webkit-transform: rotate(10deg);
-  transform: rotate(10deg);
+  left: -0.5rem;
+  -webkit-transform: rotate(-10deg);
+  transform: rotate(-10deg);
 }
 
 .AppLanding__features:nth-child(odd) .yabai-badge {
-  left: 0;
-  -webkit-transform: rotate(-10deg);
-  transform: rotate(-10deg);
+  right: -0.5rem;
+  -webkit-transform: rotate(10deg);
+  transform: rotate(10deg);
 }
 
 /***********************************************
@@ -113,6 +119,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 .react-numeric-input {
@@ -172,6 +179,7 @@
 
 .custom-form__buttons-container {
   display: flex;
+  margin-top: 1.5rem;
 }
 
 .custom-form__buttons-container button {
@@ -180,7 +188,7 @@
 }
 
 .custom-form__input-container {
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .custom-form__input {
