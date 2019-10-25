@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
-const GetsuContext = React.createContext({
-  // items: [],
-  // fillItems: () => {},
-  // addItem: () => {},
-});
+const GetsuContext = React.createContext({});
 
 export default GetsuContext;
 
@@ -14,6 +10,7 @@ export class GetsuContextProvider extends Component {
     error: null,
     authToken: null,
     sortBy: 'expiration_date',
+    isDemo: false,
   };
 
   saveAuthToken = (token) => {
@@ -53,6 +50,10 @@ export class GetsuContextProvider extends Component {
     this.setState({ sortBy: 'expiration_date' });
   };
 
+  setIsDemo = (bool) => {
+    this.setState({ isDemo: bool });
+  };
+
   addItem = (item) => {
     this.setState({
       items: [...this.state.items, item],
@@ -83,6 +84,8 @@ export class GetsuContextProvider extends Component {
       sortBy: this.state.sortBy,
       setSortBy: this.setSortBy,
       resetSortBy: this.resetSortBy,
+      isDemo: this.state.isDemo,
+      setIsDemo: this.setIsDemo,
       addItem: this.addItem,
       deleteItem: this.deleteItem,
       getItem: this.getItem,

@@ -78,14 +78,9 @@ export default class ItemDetail_Demo extends Component {
   };
 
   render() {
+    // render nothing on first mount as we're still grabbing context data
     if (!this.state.gotContextItem) {
-      return (
-        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-          Item does not exist.
-          <br />
-          (All data is refreshed in the demo)
-        </div>
-      );
+      return null;
     }
 
     let expiration_display;

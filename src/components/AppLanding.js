@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import GetsuContext from '../GetsuContext';
 import AppNav from './AppNav';
 import AppDemo from './Demo/AppDemo';
 import Login from './Login';
@@ -7,6 +8,8 @@ import Registration from './Registration';
 import NotFound from './NotFound';
 import Landing_01 from '../assets/Landing_01.png';
 class AppLanding extends Component {
+  static contextType = GetsuContext;
+
   render() {
     const LandingPage = (
       <section className="AppLanding">
@@ -51,7 +54,10 @@ class AppLanding extends Component {
           <button
             type="button"
             className="call-to-action--themed"
-            onClick={() => this.props.history.push('/demo')}
+            onClick={() => {
+              this.context.setIsDemo(true);
+              this.props.history.push('/demo');
+            }}
             aria-label="Try Demo"
           >
             Try Demo

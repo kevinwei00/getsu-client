@@ -9,7 +9,22 @@ class AppNav extends Component {
 
   render() {
     let content;
-    if (!this.context.hasAuthToken()) {
+    if (this.context.isDemo) {
+      content = (
+        <div className="AppNav__section">
+          <div className="AppNav__item">
+            <Link
+              to="/"
+              onClick={() => {
+                this.context.setIsDemo(false);
+              }}
+            >
+              Viewing Demo | Click to return
+            </Link>
+          </div>
+        </div>
+      );
+    } else if (!this.context.hasAuthToken()) {
       content = (
         <div className="AppNav__section">
           <div className="AppNav__item">
@@ -51,7 +66,12 @@ class AppNav extends Component {
     return (
       <nav className="AppNav">
         <div className="AppNav__section">
-          <Link to="/">
+          <Link
+            to="/"
+            onClick={() => {
+              this.context.setIsDemo(false);
+            }}
+          >
             <div className="AppNav__logo">
               <img src={GetsuLogo} alt="Getsu Logo" />
             </div>
