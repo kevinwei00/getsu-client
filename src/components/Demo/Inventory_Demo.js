@@ -4,6 +4,7 @@ import DemoContext from './DemoContext';
 import ExpirationsService from '../../services/expirations-service';
 import ItemDemo from './Item_Demo';
 import ScrollToTopButton from '../ScrollToTopButton';
+import DocumentUtils from '../../utils/document-utils';
 import '../Inventory.css';
 
 class Inventory_Demo extends Component {
@@ -92,6 +93,7 @@ class Inventory_Demo extends Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll);
+    DocumentUtils.scrollToTop();
   };
 
   componentWillUnmount = () => {
