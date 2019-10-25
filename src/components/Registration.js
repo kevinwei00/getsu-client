@@ -67,7 +67,7 @@ export default class Registration extends Component {
             ></input>
           </div>
           <div className="custom-form__buttons-container">
-            <button type="submit" className="call-to-action--themed">
+            <button type="submit" className="call-to-action--themed" aria-label="Register">
               Register
             </button>
           </div>

@@ -75,7 +75,7 @@ export default class Login extends Component {
             ></input>
           </div>
           <div className="custom-form__buttons-container">
-            <button type="submit" className="call-to-action--themed">
+            <button type="submit" className="call-to-action--themed" aria-label="Log In">
               Login
             </button>
           </div>
