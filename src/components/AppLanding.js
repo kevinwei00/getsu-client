@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import AppNav from './AppNav';
+import AppDemo from './Demo/AppDemo';
 import Login from './Login';
 import Registration from './Registration';
 import NotFound from './NotFound';
 import Landing_01 from '../assets/Landing_01.png';
-export default class AppLanding extends Component {
+class AppLanding extends Component {
   render() {
     const LandingPage = (
       <section className="AppLanding">
@@ -39,7 +40,12 @@ export default class AppLanding extends Component {
           </div>
         </div>
         <div className="AppLanding__demo-button">
-          <button type="button" className="call-to-action--themed">
+          <button
+            type="button"
+            className="call-to-action--themed"
+            onClick={() => this.props.history.push('/demo')}
+            aria-label="Try Demo"
+          >
             Try Demo
           </button>
         </div>
@@ -54,6 +60,7 @@ export default class AppLanding extends Component {
             <Route exact path="/" render={() => LandingPage} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Registration} />
+            <Route path="/demo" component={AppDemo} />
             <Route path="/item" render={() => <Redirect to={'/'} />} />
             <Route path="/add-item" render={() => <Redirect to={'/'} />} />
             <Route path="/usage-history" render={() => <Redirect to={'/'} />} />
@@ -64,3 +71,5 @@ export default class AppLanding extends Component {
     );
   }
 }
+
+export default withRouter(AppLanding);
