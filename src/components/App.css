@@ -12,13 +12,17 @@
 }
 
 /***********************************************
-  App
+  App (all first child sections)
 ************************************************/
 
 .App__main section {
   margin: 0 auto;
   padding-top: 1rem;
 }
+
+/***********************************************
+  AppNav
+************************************************/
 
 .AppNav {
   display: flex;
@@ -43,8 +47,7 @@
 }
 
 .AppNav__item a,
-.AppNav__username,
-.call-to-action--themed {
+.AppNav__username {
   color: beige;
   text-shadow: rgba(0, 0, 0, 0.25) 0 0 4px;
 }
@@ -56,20 +59,12 @@
   margin: 0.65rem 0;
 }
 
+/***********************************************
+  AppLanding
+************************************************/
+
 .AppLanding > header {
   margin-bottom: 1rem;
-}
-
-.AppLanding__features {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  margin-bottom: 1rem;
-}
-
-.AppLanding__features__text {
-  font-size: 1.2rem;
-  margin: 2.5rem 1rem 1.25rem 1rem;
 }
 
 .AppLanding__demo-button > button {
@@ -79,8 +74,33 @@
   margin-bottom: 2rem;
 }
 
-/* Features top border */
-.AppLanding__features:nth-child(2)::after,
+.AppLanding__features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.AppLanding__features__text {
+  position: relative;
+  font-size: 1.2rem;
+  margin: 2.5rem 1rem 1.25rem 1rem;
+}
+
+/**************** Image positioning ****************/
+
+.AppLanding__features:nth-child(2) > img {
+  max-width: 115vw;
+}
+
+.AppLanding__features:nth-child(2) .AppLanding__features__text {
+  margin-top: 1rem;
+}
+
+/*************** Features top border ***************/
+
 .AppLanding__features:nth-child(3)::after,
 .AppLanding__features:nth-child(4)::after {
   content: '';
@@ -91,14 +111,21 @@
   width: 50%;
 }
 
+/************* yabai-badge positioning *************/
+
+.AppLanding__features__text .yabai-badge {
+  font-size: 83%;
+  top: -2.25rem;
+}
+
 .AppLanding__features:nth-child(even) .yabai-badge {
-  left: -0.5rem;
+  left: -1.4rem;
   -webkit-transform: rotate(-10deg);
   transform: rotate(-10deg);
 }
 
 .AppLanding__features:nth-child(odd) .yabai-badge {
-  right: -0.5rem;
+  right: -1.4rem;
   -webkit-transform: rotate(10deg);
   transform: rotate(10deg);
 }
@@ -109,17 +136,12 @@
 
 .yabai-badge {
   position: absolute;
-  top: 0;
   font-family: 'Sawarabi Gothic', sans-serif;
   font-weight: bolder;
   color: beige;
   background-color: rgb(255, 64, 64);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   padding: 0.2rem 0.2rem 0.2rem 0.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
 }
 
 .react-numeric-input {
@@ -287,6 +309,8 @@
 
 .call-to-action--themed {
   background: linear-gradient(45deg, #cf70f6 0%, #cf70f6 30%, #755dfa 100%);
+  color: beige;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 0 4px;
 }
 
 /***********************************************
@@ -312,5 +336,11 @@
 @media screen and (min-width: 1025px) {
   .App__main section {
     max-width: 40rem;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .AppLanding__features:nth-child(2) > img {
+    max-width: 50vw;
   }
 }
