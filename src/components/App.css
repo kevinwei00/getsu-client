@@ -65,6 +65,7 @@
 
 .AppLanding > header {
   margin-bottom: 1rem;
+  background-color: rgb(247, 247, 215);
 }
 
 .AppLanding__demo-button > button {
@@ -87,6 +88,16 @@
   position: relative;
   font-size: 1.2rem;
   margin: 2.5rem 1rem 1.25rem 1rem;
+}
+
+.AppLanding__features__text--emphasis {
+  font-size: 120%;
+  background-color: rgb(247, 247, 215);
+}
+
+/* Second feature sentence should hug right */
+.AppLanding__features:nth-child(3) .AppLanding__features__text--emphasis {
+  text-align: right;
 }
 
 /**************** Image positioning ****************/
@@ -323,6 +334,13 @@
   }
 }
 
+/* specific fix: keep sentence on one line */
+@media screen and (max-width: 339px) {
+  .AppLanding__features__text--emphasis {
+    font-size: 112%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   html {
     font-size: 150%;
@@ -330,6 +348,21 @@
 
   .App__main section {
     max-width: 30rem;
+  }
+
+  .AppLanding__features__text {
+    margin: 2.5rem 0.2rem 1.25rem 0.2rem;
+  }
+}
+
+/* specific fix: give yabai-badge ample spacing from viewport edge */
+@media only screen and (width: 768px) {
+  .AppLanding__features:nth-child(even) .yabai-badge {
+    left: -0.6rem;
+  }
+
+  .AppLanding__features:nth-child(odd) .yabai-badge {
+    right: -0.6rem;
   }
 }
 

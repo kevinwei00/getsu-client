@@ -21,22 +21,30 @@ class AppLanding extends Component {
           <img src={Landing_01} alt="Getsu Feature 1" />
           <div className="AppLanding__features__text">
             <div className="yabai-badge">やばい！</div>
-            Getsu is a household inventory tracker that provides you with a way to catalog
-            and view any consumable items of your choosing.
+            <span className="AppLanding__features__text--emphasis">
+              Getsu is a household inventory tracker
+            </span>{' '}
+            that provides you with a way to catalog and view any consumable items of your
+            choosing.
           </div>
         </div>
         <div className="AppLanding__features">
           <div className="AppLanding__features__text">
             <div className="yabai-badge">やばい！</div>
-            Each item is represented by a progress bar that shows you at a glance how much
-            of an item is left. Simplify shopping lists!
+            <div className="AppLanding__features__text--emphasis">
+              Simplify your shopping lists!
+            </div>{' '}
+            Progress bars show at a glance how much of an item is left.
           </div>
         </div>
         <div className="AppLanding__features">
           <div className="AppLanding__features__text">
             <div className="yabai-badge">やばい！</div>
-            Set the expiration date of an item and its progress bar will change colors
-            based on how close to the date it is. Never let food go bad again!
+            <div className="AppLanding__features__text--emphasis">
+              Never let food go bad again!
+            </div>{' '}
+            Set an item's expiration date and its progress bar will change colors based on
+            how close it is to expiring.
           </div>
         </div>
         <div className="AppLanding__demo-button">
