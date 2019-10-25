@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './ScrollToTopButton.css';
+import DocumentUtils from '../utils/document-utils';
 
 export default class ScrollToTopButton extends Component {
   scrollToTop = () => {
-    document.querySelector('.AppNav').scrollIntoView({ behavior: 'smooth' });
+    DocumentUtils.scrollToTop({ behavior: 'smooth' });
   };
 
   render() {

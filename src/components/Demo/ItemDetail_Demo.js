@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DemoContext from './DemoContext';
 import NumericInput from 'react-numeric-input';
 import ProgressBar from '../ProgressBar';
-
+import DocumentUtils from '../../utils/document-utils';
 export default class ItemDetail_Demo extends Component {
   static contextType = DemoContext;
 
@@ -70,7 +70,7 @@ export default class ItemDetail_Demo extends Component {
   componentDidMount = () => {
     window.addEventListener('beforeunload', this.handleWindowClose);
     this.handleGetItem(this.props.match.params.item_id);
-    document.querySelector('.AppNav').scrollIntoView();
+    DocumentUtils.scrollToTop();
   };
 
   componentWillUnmount = () => {

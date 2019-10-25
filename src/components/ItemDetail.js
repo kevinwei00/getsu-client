@@ -3,7 +3,7 @@ import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
 import NumericInput from 'react-numeric-input';
 import ProgressBar from './ProgressBar';
-
+import DocumentUtils from '../utils/document-utils';
 export default class ItemDetail extends Component {
   static contextType = GetsuContext;
 
@@ -91,7 +91,7 @@ export default class ItemDetail extends Component {
   componentDidMount = () => {
     window.addEventListener('beforeunload', this.handleWindowClose);
     this.handleGetItem(this.props.match.params.item_id);
-    document.querySelector('.AppNav').scrollIntoView();
+    DocumentUtils.scrollToTop();
   };
 
   componentWillUnmount = () => {

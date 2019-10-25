@@ -6,7 +6,7 @@ import ExpirationsService from '../services/expirations-service';
 import Item from './Item';
 import ScrollToTopButton from './ScrollToTopButton';
 import './Inventory.css';
-
+import DocumentUtils from '../utils/document-utils';
 export default class Inventory extends Component {
   static contextType = GetsuContext;
 
@@ -25,7 +25,7 @@ export default class Inventory extends Component {
         if (this.props.location.state) {
           document.getElementById(this.props.location.state.item_id).scrollIntoView();
         } else {
-          document.querySelector('.AppNav').scrollIntoView();
+          DocumentUtils.scrollToTop();
         }
       })
       .catch((error) => {

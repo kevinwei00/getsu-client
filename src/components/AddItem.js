@@ -3,7 +3,7 @@ import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
 import RequiredField from './RequiredField';
 import Switch from './Switch';
-
+import DocumentUtils from '../utils/document-utils';
 export default class AddItem extends Component {
   static contextType = GetsuContext;
 
@@ -70,8 +70,8 @@ export default class AddItem extends Component {
   };
 
   componentDidMount = () => {
-    document.querySelector('.AppNav').scrollIntoView();
-  }
+    DocumentUtils.scrollToTop();
+  };
 
   render() {
     return (

@@ -5,10 +5,11 @@ import Inventory_Demo from './Inventory_Demo';
 import ItemDetail_Demo from './ItemDetail_Demo';
 import AddItem_Demo from './AddItem_Demo';
 import NotFound from '../NotFound';
+import DocumentUtils from '../../utils/document-utils';
 
 export default class AppDemo extends Component {
   componentDidMount = () => {
-    document.querySelector('.AppNav').scrollIntoView();
+    DocumentUtils.scrollToTop();
   };
 
   render() {

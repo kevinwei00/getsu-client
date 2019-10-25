@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import DemoContext from './DemoContext';
 import RequiredField from '../RequiredField';
 import Switch from '../Switch';
-
+import DocumentUtils from '../../utils/document-utils';
 class AddItem_Demo extends Component {
   static contextType = DemoContext;
 
@@ -65,7 +65,7 @@ class AddItem_Demo extends Component {
   };
 
   componentDidMount = () => {
-    document.querySelector('.AppNav').scrollIntoView();
+    DocumentUtils.scrollToTop();
   };
 
   render() {
