@@ -23,7 +23,7 @@ The core philosophy that I stuck to when designing the user-facing view of Getsu
 
 - Add or delete named, consumable items from inventory.
 - Increase or decrease item quantities, shown with progress bars.
-- Set expiration dates on an item and its progress bars will change colors based on how close it is to expiring.
+- Set the expiration date on an item and its progress bar will change colors based on how close it is to expiring.
 - Sort items by expiration date, name, or quantity.
 - Access user account from any device.
 
