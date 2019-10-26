@@ -24,11 +24,8 @@ class AppLanding extends Component {
           <img src={Landing_01} alt="Getsu Feature 1" />
           <div className="AppLanding__features__text">
             <div className="yabai-badge">やばい！</div>
-            <span className="AppLanding__features__text--emphasis">
-              Getsu is a household inventory tracker
-            </span>{' '}
-            that provides you with a way to catalog and view any consumable items of your
-            choosing.
+            Getsu is a household inventory tracker that provides you with a way to catalog
+            and view any consumable items of your choosing.
           </div>
         </div>
         <div className="AppLanding__features">
