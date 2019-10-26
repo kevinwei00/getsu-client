@@ -4,7 +4,7 @@
 - [Link to live app](https://getsu-client.kevinwei.now.sh/)
 - [Link to server code](https://github.com/kevinwei00/getsu-server)
 
-![](getsu-mobile.png)
+![](src/assets/getsu-mobile.png)
 > Inventory Page (Mobile)
 
 ## Purpose
@@ -15,7 +15,7 @@ I just wanted something simple and elegant that showed me how much of something 
 
 The core philosophy that I stuck to when designing the user-facing view of Getsu was to show only as much as needed, and nothing more.
 
-![](getsu-desktop.png)
+![](src/assets/getsu-desktop.png)
 
 > Landing Page (Desktop)
 
