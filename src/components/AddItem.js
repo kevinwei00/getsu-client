@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
+import ExpirationsService from '../services/expirations-service';
 import RequiredField from './RequiredField';
 import Switch from './Switch';
 import DocumentUtils from '../utils/document-utils';
@@ -136,6 +137,7 @@ export default class AddItem extends Component {
                 type="date"
                 name="expiration_date"
                 id="expiration_date"
+                min={ExpirationsService.toISOStringNoTime(new Date())}
                 onChange={this.handleChange}
               />
             </div>

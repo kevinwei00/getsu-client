@@ -218,24 +218,46 @@
   margin-bottom: 0.5rem;
 }
 
-.custom-form__input {
+.custom-form__buttons-container,
+.custom-form__input-container {
+  font-size: 1.2rem;
+}
+
+.custom-form__input,
+.custom-form__input--expiration-date,
+.custom-select-wrapper select { /* include custom-select */
+  border: 1px solid lightgray;
+  border-radius: 0.25em;
+}
+
+.custom-form__input,
+.custom-form__input--expiration-date {
   line-height: 1.85;
   padding: 0.35rem 0.7rem;
   width: 100%;
 }
 
 .custom-form__input,
-.custom-select-wrapper select {
-  border: 1px solid lightgray;
-  border-radius: 0.25em;
+.custom-select-wrapper select { /* include custom-select */
   -moz-appearance: none;
   -webkit-appearance: none;
-  appearance: none;
 }
 
-.custom-form__buttons-container,
-.custom-form__input-container {
-  font-size: 1.2rem;
+/***************** Date Picker *****************/
+
+.custom-form__input--expiration-date {
+  -webkit-appearance: none;
+  background-color: white;
+  min-height: 3rem;
+}
+
+.custom-form__input--expiration-date::-webkit-inner-spin-button { 
+  display: none;
+}
+
+.custom-form__input--expiration-date::-webkit-calendar-picker-indicator { 
+  background-color: white;
+  color: black;
 }
 
 /************** Edit Item Details **************/
@@ -264,9 +286,19 @@
   box-shadow: none;
 }
 
+/**** Edit Item Details (specificity fixes) ****/
+
 .ItemDetail #item_name {
   text-align: center;
   padding: 0;
+}
+
+.ItemDetail .ProgressBar {
+  min-height: 3rem;
+}
+
+.ItemDetail .custom-form__input-container {
+  margin-bottom: 1rem;
 }
 
 /***********************************************
