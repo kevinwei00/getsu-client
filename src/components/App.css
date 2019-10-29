@@ -238,11 +238,36 @@
   font-size: 1.2rem;
 }
 
-/* .custom-form__label {
+/************** Edit Item Details **************/
+
+.custom-form__button--edit-toggle,
+.custom-form__button--edit-text {
+  background-color: beige;
+  color: black;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
   border-bottom: 1px dotted currentColor;
   display: inline-block;
   line-height: 0.85;
-} */
+}
+
+.custom-form__button--edit-text {
+  cursor: text;
+}
+
+.custom-form__button--edit-toggle:hover,
+.custom-form__button--edit-toggle:active,
+.custom-form__button--edit-text:hover,
+.custom-form__button--edit-text:active {
+  box-shadow: none;
+}
+
+.ItemDetail #item_name {
+  text-align: center;
+  padding: 0;
+}
 
 /***********************************************
   Custom Select

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
+import ExpirationsService from '../services/expirations-service';
 import NumericInput from 'react-numeric-input';
 import ProgressBar from './ProgressBar';
 import DocumentUtils from '../utils/document-utils';
+import Switch from './Switch';
+
 export default class ItemDetail extends Component {
   static contextType = GetsuContext;
 
   state = {
     hasServerResponse: false,
+    toggle_expiration_date: false,
+    toggle_edit_max_quantity: false,
+    toggle_edit_item_name: false,
     currentItem: null,
-    local_quantity: 0,
-    local_max_quantity: 0,
-    percent: 0,
   };
 
   handleGetItem = (item_id) => {
@@ -20,10 +23,8 @@ export default class ItemDetail extends Component {
       .then((item) => {
         this.setState({
           hasServerResponse: true,
+          toggle_expiration_date: !!item.expiration_date,
           currentItem: item,
-          local_quantity: item.quantity,
-          local_max_quantity: item.max_quantity,
-          percent: (item.quantity / item.max_quantity) * 100,
         });
       })
       .catch((error) => {
@@ -32,22 +33,13 @@ export default class ItemDetail extends Component {
   };
 
   handleUpdateItem = (item_id) => {
-    // if item doesn't exist, early exit
-    // if (!this.context.getItem(item_id)) {
-    //   return;
-    // }
-
-    // if not authorized, early exit
-    if (!this.context.hasAuthToken()) {
-      return;
+    if (this.context.hasAuthToken()) {
+      ItemsApiService.updateItemRequest(item_id, this.state.currentItem).catch(
+        (error) => {
+          this.context.setError(error);
+        }
+      );
     }
-
-    ItemsApiService.updateItemRequest(item_id, {
-      quantity: this.state.local_quantity,
-      max_quantity: this.state.local_max_quantity,
-    }).catch((error) => {
-      this.context.setError(error);
-    });
   };
 
   handleDeleteItem = (item_id) => {
@@ -61,25 +53,65 @@ export default class ItemDetail extends Component {
       });
   };
 
-  handleChange = (val) => {
-    if (val >= this.state.currentItem.max_quantity) {
-      this.setState(
-        {
-          local_quantity: val,
-          local_max_quantity: val,
-          percent: 100,
+  handleChange = (e, numericInputName) => {
+    let updateCurrentItem = !!numericInputName
+      ? { ...this.state.currentItem, [numericInputName]: e }
+      : { ...this.state.currentItem, [e.target.name]: e.target.value };
+
+    if (updateCurrentItem.max_quantity < updateCurrentItem.quantity) {
+      updateCurrentItem.quantity = updateCurrentItem.max_quantity;
+    }
+
+    // if user clears the date input, replace value with null
+    if (updateCurrentItem.expiration_date === '') {
+      updateCurrentItem.expiration_date = null;
+    }
+
+    this.setState({ currentItem: updateCurrentItem }, () =>
+      this.handleUpdateItem(this.props.match.params.item_id)
+    );
+  };
+
+  handleToggleExpirationDate = (e) => {
+    this.setState(
+      {
+        toggle_expiration_date: e.target.checked,
+        currentItem: {
+          ...this.state.currentItem,
+          expiration_date: e.target.checked
+            ? this.state.currentItem.expiration_date
+              ? this.state.currentItem.expiration_date
+              : null
+            : null,
         },
-        () => this.handleUpdateItem(this.props.match.params.item_id)
-      );
-    } else if (val < this.state.currentItem.max_quantity) {
-      this.setState(
-        {
-          local_quantity: val,
-          local_max_quantity: this.state.currentItem.max_quantity,
-          percent: (val / this.state.currentItem.max_quantity) * 100,
-        },
-        () => this.handleUpdateItem(this.props.match.params.item_id)
-      );
+      },
+      () => this.handleUpdateItem(this.props.match.params.item_id)
+    );
+  };
+
+  handleToggleEditMaxQuantity = () => {
+    this.setState({
+      toggle_edit_max_quantity: !this.state.toggle_edit_max_quantity,
+    });
+  };
+
+  handleToggleEditItemName = () => {
+    this.setState(
+      {
+        toggle_edit_item_name: !this.state.toggle_edit_item_name,
+      },
+      () => {
+        const item_name_field = document.getElementById('item_name');
+        if (item_name_field) {
+          item_name_field.focus();
+        }
+      }
+    );
+  };
+
+  handlePressEnter = (e) => {
+    if (e.keyCode === 13) {
+      document.querySelector('.custom-form').submit();
     }
   };
 
@@ -89,13 +121,15 @@ export default class ItemDetail extends Component {
   };
 
   componentDidMount = () => {
-    window.addEventListener('beforeunload', this.handleWindowClose);
+    // window.addEventListener('beforeunload', this.handleWindowClose);
+    window.addEventListener('keypress', this.handlePressEnter);
     this.handleGetItem(this.props.match.params.item_id);
     DocumentUtils.scrollToTop();
   };
 
   componentWillUnmount = () => {
-    window.removeEventListener('beforeunload', this.handleWindowClose);
+    // window.removeEventListener('beforeunload', this.handleWindowClose);
+    window.removeEventListener('keypress', this.handlePressEnter);
   };
 
   render() {
@@ -110,7 +144,28 @@ export default class ItemDetail extends Component {
 
     const { error } = this.context;
     let content;
-    let expiration_display;
+    let expiration_date_string;
+    let numericInputStyle = {
+      input: {
+        height: '3rem',
+      },
+      'input:not(.form-control)': {
+        borderRadius: '0.25rem',
+        padding: '0.35rem 0.7rem',
+      },
+      btn: {
+        background: 'rgb(226, 226, 226)',
+        width: '2rem',
+      },
+      'btnUp.mobile': {
+        width: '4rem',
+        borderRadius: '0.25rem',
+      },
+      'btnDown.mobile': {
+        width: '4rem',
+        borderRadius: '0.25rem',
+      },
+    };
 
     if (error) {
       content = (
@@ -120,69 +175,110 @@ export default class ItemDetail extends Component {
       );
     } else {
       if (this.state.currentItem.expiration_date) {
-        const d = new Date(this.state.currentItem.expiration_date);
-        expiration_display = (
-          <div className="custom-form__input-container">
-            <div className="custom-form__label">Expires</div>
-            <div>
-              {`${d.getMonth() > 8 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)}
-              / ${d.getDate() > 9 ? d.getDate() : '0' + d.getDate()}
-              / ${d.getFullYear()}`}
-            </div>
-          </div>
+        expiration_date_string = ExpirationsService.toISOStringNoTime(
+          this.state.currentItem.expiration_date
         );
       }
       content = (
         <section className="ItemDetail">
           <header>
-            <h1>{this.state.currentItem.item_name}</h1>
+            <h1>
+              {this.state.toggle_edit_item_name ? (
+                <input
+                  className="custom-form__input"
+                  type="text"
+                  name="item_name"
+                  id="item_name"
+                  defaultValue={this.state.currentItem.item_name}
+                  onChange={this.handleChange}
+                  onBlur={this.handleToggleEditItemName}
+                />
+              ) : (
+                <button
+                  type="button"
+                  className="custom-form__button--edit-text"
+                  onClick={this.handleToggleEditItemName}
+                  aria-label="Edit Item Name"
+                >
+                  {this.state.currentItem.item_name}
+                </button>
+              )}
+            </h1>
           </header>
           <form className="custom-form">
             <div className="custom-form__input-container">
               <ProgressBar
                 expiration_date={`${this.state.currentItem.expiration_date}`}
-                now={Math.round(this.state.percent)}
-                label={`${this.state.local_quantity} / ${this.state.local_max_quantity} ${this.state.currentItem.unit_type}`}
+                now={Math.round(
+                  (this.state.currentItem.quantity /
+                    this.state.currentItem.max_quantity) *
+                    100
+                )}
+                label={`${this.state.currentItem.quantity} / ${this.state.currentItem.max_quantity} ${this.state.currentItem.unit_type}`}
               />
             </div>
             <div className="custom-form__input-container">
-              <div className="custom-form__label">Quantity</div>
+              <div>Quantity</div>
               <div>
                 <NumericInput
                   className="custom-form__input"
-                  placeholder="Quantity"
                   strict
                   min={0}
+                  max={this.state.currentItem.max_quantity}
                   precision={2}
-                  defaultValue={this.state.local_quantity}
-                  onChange={this.handleChange}
-                  style={{
-                    input: {
-                      height: '3rem',
-                    },
-                    'input:not(.form-control)': {
-                      borderRadius: '0.25rem',
-                      padding: '0.35rem 0.7rem',
-                    },
-                    btn: {
-                      background: 'rgb(226, 226, 226)',
-                      width: '2rem',
-                    },
-                    'btnUp.mobile': {
-                      width: '4rem',
-                      borderRadius: '0.25rem',
-                    },
-                    'btnDown.mobile': {
-                      width: '4rem',
-                      borderRadius: '0.25rem',
-                    },
-                  }}
+                  value={this.state.currentItem.quantity}
+                  onChange={(val) => this.handleChange(val, 'quantity')}
+                  style={numericInputStyle}
                 />
               </div>
             </div>
-            <p />
-            {expiration_display}
-            <p />
+            <div className="custom-form__input-container">
+              <button
+                type="button"
+                className="custom-form__button--edit-toggle"
+                onClick={this.handleToggleEditMaxQuantity}
+                aria-label="Edit Max Quantity"
+              >
+                Max Quantity
+              </button>
+              {this.state.toggle_edit_max_quantity && (
+                <div>
+                  <NumericInput
+                    className="custom-form__input"
+                    strict
+                    min={0}
+                    precision={2}
+                    defaultValue={this.state.currentItem.max_quantity}
+                    onChange={(val) => this.handleChange(val, 'max_quantity')}
+                    style={numericInputStyle}
+                  />
+                </div>
+              )}
+            </div>
+            <div className="custom-form__input-container">
+              <div>Has Expiration Date</div>
+              <Switch
+                additionalClass="custom-form__input"
+                identifier={`toggle_expiration_date`}
+                isOn={this.state.toggle_expiration_date}
+                onColor="#06D6A0"
+                handleToggle={this.handleToggleExpirationDate}
+              />
+            </div>
+            {this.state.toggle_expiration_date && (
+              <div className="custom-form__input-container">
+                <label htmlFor="expiration_date">Expiration Date</label>
+                <input
+                  className="custom-form__input--expiration-date"
+                  type="date"
+                  name="expiration_date"
+                  id="expiration_date"
+                  min={ExpirationsService.toISOStringNoTime(new Date())}
+                  defaultValue={expiration_date_string}
+                  onChange={this.handleChange}
+                />
+              </div>
+            )}
             <div className="custom-form__buttons-container">
               <button
                 type="button"
