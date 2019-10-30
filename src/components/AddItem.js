@@ -56,6 +56,11 @@ export default class AddItem extends Component {
       unit_type: this.state.unit_type.value ? this.state.unit_type.value : 'units',
       expiration_date: this.state.expiration_date.value,
     };
+    // add time (with local timezone) to the date
+    newItem.expiration_date = new Date(newItem.expiration_date);
+    newItem.expiration_date.setHours(24);
+    newItem.expiration_date = newItem.expiration_date.toISOString();
+
     this.handleCreateItem(newItem);
   };
 

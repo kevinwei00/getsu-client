@@ -6,6 +6,9 @@ const ExpirationsService = {
 
     const today = new Date();
     expiration_date = new Date(expiration_date);
+    // console.log(`
+    // today: ${today.toISOString()}
+    // expir: ${expiration_date.toISOString()}`);
     let numDays = (expiration_date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
     numDays = Math.ceil(numDays);
     if (numDays <= 0) {

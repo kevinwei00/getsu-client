@@ -66,6 +66,11 @@ export default class ItemDetail extends Component {
     if (updateCurrentItem.expiration_date === '') {
       updateCurrentItem.expiration_date = null;
     }
+    // otherwise, add time (with local timezone) to the date
+    else {
+      updateCurrentItem.expiration_date = new Date(updateCurrentItem.expiration_date);
+      updateCurrentItem.expiration_date.setHours(24);
+    }
 
     this.setState({ currentItem: updateCurrentItem }, () =>
       this.handleUpdateItem(this.props.match.params.item_id)
