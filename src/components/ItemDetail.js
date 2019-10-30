@@ -5,6 +5,7 @@ import ExpirationsService from '../services/expirations-service';
 import NumericInput from 'react-numeric-input';
 import ProgressBar from './ProgressBar';
 import DocumentUtils from '../utils/document-utils';
+import TimeUtils from '../utils/time-utils';
 import Switch from './Switch';
 
 export default class ItemDetail extends Component {
@@ -62,15 +63,9 @@ export default class ItemDetail extends Component {
       updateCurrentItem.quantity = updateCurrentItem.max_quantity;
     }
 
-    // if user clears the date input, replace value with null
-    if (updateCurrentItem.expiration_date === '') {
-      updateCurrentItem.expiration_date = null;
-    }
-    // otherwise, add time (with local timezone) to the date
-    else {
-      updateCurrentItem.expiration_date = new Date(updateCurrentItem.expiration_date);
-      updateCurrentItem.expiration_date.setHours(24);
-    }
+    updateCurrentItem.expiration_date = TimeUtils.convertDateToTimestamp(
+      updateCurrentItem.expiration_date
+    );
 
     this.setState({ currentItem: updateCurrentItem }, () =>
       this.handleUpdateItem(this.props.match.params.item_id)

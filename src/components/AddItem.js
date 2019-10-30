@@ -5,6 +5,8 @@ import ExpirationsService from '../services/expirations-service';
 import RequiredField from './RequiredField';
 import Switch from './Switch';
 import DocumentUtils from '../utils/document-utils';
+import TimeUtils from '../utils/time-utils';
+
 export default class AddItem extends Component {
   static contextType = GetsuContext;
 
@@ -56,11 +58,7 @@ export default class AddItem extends Component {
       unit_type: this.state.unit_type.value ? this.state.unit_type.value : 'units',
       expiration_date: this.state.expiration_date.value,
     };
-    // add time (with local timezone) to the date
-    newItem.expiration_date = new Date(newItem.expiration_date);
-    newItem.expiration_date.setHours(24);
-    newItem.expiration_date = newItem.expiration_date.toISOString();
-
+    newItem.expiration_date = TimeUtils.convertDateToTimestamp(newItem.expiration_date);
     this.handleCreateItem(newItem);
   };
 
