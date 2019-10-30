@@ -21,11 +21,6 @@ const ExpirationsService = {
       return 'fresh';
     }
   },
-  toISOStringNoTime: (date) => {
-    return typeof date === 'string'
-      ? date.split('T')[0]
-      : date.toISOString().split('T')[0];
-  },
 };
 
 export default ExpirationsService;

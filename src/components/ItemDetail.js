@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
-import ExpirationsService from '../services/expirations-service';
 import NumericInput from 'react-numeric-input';
 import ProgressBar from './ProgressBar';
 import DocumentUtils from '../utils/document-utils';
@@ -63,7 +62,7 @@ export default class ItemDetail extends Component {
       updateCurrentItem.quantity = updateCurrentItem.max_quantity;
     }
 
-    updateCurrentItem.expiration_date = TimeUtils.convertDateToTimestamp(
+    updateCurrentItem.expiration_date = TimeUtils.dateToTimestamp(
       updateCurrentItem.expiration_date
     );
 
@@ -144,7 +143,6 @@ export default class ItemDetail extends Component {
 
     const { error } = this.context;
     let content;
-    let expiration_date_string;
     let numericInputStyle = {
       input: {
         height: '3rem',
@@ -174,11 +172,6 @@ export default class ItemDetail extends Component {
         </div>
       );
     } else {
-      if (this.state.currentItem.expiration_date) {
-        expiration_date_string = ExpirationsService.toISOStringNoTime(
-          this.state.currentItem.expiration_date
-        );
-      }
       content = (
         <section className="ItemDetail">
           <header>
@@ -273,8 +266,9 @@ export default class ItemDetail extends Component {
                   type="date"
                   name="expiration_date"
                   id="expiration_date"
-                  min={ExpirationsService.toISOStringNoTime(new Date())}
-                  defaultValue={expiration_date_string}
+                  defaultValue={TimeUtils.timestampToDate(
+                    this.state.currentItem.expiration_date
+                  )}
                   onChange={this.handleChange}
                 />
               </div>
