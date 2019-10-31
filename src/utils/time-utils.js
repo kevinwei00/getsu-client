@@ -4,8 +4,8 @@ const TimeUtils = {
    * @returns {string} YYYY-MM-DDTHH:mm:ss.sssZ, or null
    */
   dateToTimestamp(date) {
-    // if date is a blank string, replace with null
-    if (date === '') {
+    // if date is null or is a blank string, just push null up to the database
+    if (!date || date === '') {
       date = null;
     }
     // otherwise, add time (with local timezone) to the date

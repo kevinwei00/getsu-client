@@ -62,9 +62,11 @@ export default class ItemDetail extends Component {
       updateCurrentItem.quantity = updateCurrentItem.max_quantity;
     }
 
-    updateCurrentItem.expiration_date = TimeUtils.dateToTimestamp(
-      updateCurrentItem.expiration_date
-    );
+    if (updateCurrentItem.expiration_date !== this.state.currentItem.expiration_date) {
+      updateCurrentItem.expiration_date = TimeUtils.dateToTimestamp(
+        updateCurrentItem.expiration_date
+      );
+    }
 
     this.setState({ currentItem: updateCurrentItem }, () =>
       this.handleUpdateItem(this.props.match.params.item_id)

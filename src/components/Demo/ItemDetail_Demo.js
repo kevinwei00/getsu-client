@@ -45,9 +45,11 @@ export default class ItemDetail_Demo extends Component {
       updateCurrentItem.quantity = updateCurrentItem.max_quantity;
     }
 
-    updateCurrentItem.expiration_date = TimeUtils.dateToTimestamp(
-      updateCurrentItem.expiration_date
-    );
+    if (updateCurrentItem.expiration_date !== this.state.currentItem.expiration_date) {
+      updateCurrentItem.expiration_date = TimeUtils.dateToTimestamp(
+        updateCurrentItem.expiration_date
+      );
+    }
 
     this.setState({ currentItem: updateCurrentItem }, () =>
       this.handleUpdateItem(this.props.match.params.item_id)
@@ -114,7 +116,7 @@ export default class ItemDetail_Demo extends Component {
     if (!this.state.currentItem) {
       return null;
     }
-    console.log(this.state.currentItem.max_quantity)
+
     const numericInputStyle = {
       input: {
         height: '3rem',
