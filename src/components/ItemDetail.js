@@ -6,6 +6,8 @@ import ProgressBar from './ProgressBar';
 import DocumentUtils from '../utils/document-utils';
 import TimeUtils from '../utils/time-utils';
 import Switch from './Switch';
+import Loading from './Loading';
+import Error from './Error';
 
 export default class ItemDetail extends Component {
   static contextType = GetsuContext;
@@ -127,21 +129,12 @@ export default class ItemDetail extends Component {
 
   render() {
     if (!this.state.currentItem) {
-      return (
-        <div className="loading-display">
-          <div className="loading-display__spinner"></div>
-          Loading...
-        </div>
-      );
+      return <Loading />;
     }
 
     const { error } = this.context;
     if (error) {
-      return (
-        <div className="error-display" role="alert">
-          {error.message ? 'Internal Server Error' : error.error.message}
-        </div>
-      );
+      return <Error error={error} />;
     } else {
       const numericInputStyle = {
         input: {

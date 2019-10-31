@@ -6,6 +6,8 @@ import Item from './Item';
 import ScrollToTopButton from './ScrollToTopButton';
 import './Inventory.css';
 import DocumentUtils from '../utils/document-utils';
+import Loading from './Loading';
+import Error from './Error';
 
 export default class Inventory extends Component {
   static contextType = GetsuContext;
@@ -129,22 +131,13 @@ export default class Inventory extends Component {
 
   render() {
     if (this.context.items.length === 0) {
-      return (
-        <div className="loading-display">
-          <div className="loading-display__spinner"></div>
-          Loading...
-        </div>
-      );
+      return <Loading />;
     }
 
     let content;
     const { error } = this.context;
     if (error) {
-      content = (
-        <div className="error-display" role="alert">
-          {error.message ? 'Internal Server Error' : error.error.message}
-        </div>
-      );
+      content = <Error error={error} />;
     } else if (this.context.items.length === 0) {
       content = <div className="Inventory__empty">Nothing to display.</div>;
     } else {

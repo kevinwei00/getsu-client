@@ -5,6 +5,7 @@ import RequiredField from './RequiredField';
 import Switch from './Switch';
 import DocumentUtils from '../utils/document-utils';
 import TimeUtils from '../utils/time-utils';
+import Error from './Error';
 
 export default class AddItem extends Component {
   static contextType = GetsuContext;
@@ -85,11 +86,7 @@ export default class AddItem extends Component {
   render() {
     const { error } = this.context;
     if (error) {
-      return (
-        <div className="error-display" role="alert">
-          {error.message ? 'Internal Server Error' : error.error.message}
-        </div>
-      );
+      return <Error error={error} />;
     } else {
       return (
         <section className="AddItem">
