@@ -7,6 +7,7 @@ import Login from './Login';
 import Registration from './Registration';
 import NotFound from './NotFound';
 import Landing_01 from '../assets/Landing_01.png';
+
 class AppLanding extends Component {
   static contextType = GetsuContext;
 

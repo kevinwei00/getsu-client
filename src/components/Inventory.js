@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import GetsuContext from '../GetsuContext';
 import ItemsApiService from '../services/items-api-service';
 import ExpirationsService from '../services/expirations-service';
@@ -7,6 +6,7 @@ import Item from './Item';
 import ScrollToTopButton from './ScrollToTopButton';
 import './Inventory.css';
 import DocumentUtils from '../utils/document-utils';
+
 export default class Inventory extends Component {
   static contextType = GetsuContext;
 
@@ -180,7 +180,6 @@ export default class Inventory extends Component {
       <section className="Inventory">
         <header className="Inventory__header">
           <h1>Inventory</h1>
-          {/* <Link to="/add-item">+</Link> */}
           <button
             type="button"
             className="Inventory__add-button call-to-action--themed"
