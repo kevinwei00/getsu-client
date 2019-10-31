@@ -23,7 +23,13 @@ export default class Inventory extends Component {
       })
       .then(() => {
         if (this.props.location.state) {
-          document.getElementById(this.props.location.state.item_id).scrollIntoView();
+          const el = document.getElementById(this.props.location.state.item_id);
+          if (el) {
+            el.scrollIntoView();
+          }
+          else {
+            DocumentUtils.scrollToTop();
+          }
         } else {
           DocumentUtils.scrollToTop();
         }
