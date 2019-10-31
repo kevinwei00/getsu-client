@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GetsuContext from '../GetsuContext';
 import TokenService from '../services/token-service';
 import AuthApiService from '../services/auth-api-service';
+import Error from './Error';
 
 export default class Login extends Component {
   static contextType = GetsuContext;
@@ -37,7 +38,7 @@ export default class Login extends Component {
         history.push(destination);
       })
       .catch((res) => {
-        this.setState({ error: res.error });
+        this.setState({ error: { error: { message: res.error } } });
       });
   };
 
@@ -48,11 +49,7 @@ export default class Login extends Component {
         <header>
           <h1>Login</h1>
         </header>
-        {error && (
-          <div className="error-display" role="alert">
-            {error}
-          </div>
-        )}
+        {error && <Error error={error} />}
         <form className="custom-form" onSubmit={this.handleSubmitJwtAuth}>
           <div className="custom-form__input-container">
             <label htmlFor="user_name">User Name</label>

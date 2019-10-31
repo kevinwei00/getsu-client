@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthApiService from '../services/auth-api-service';
 import RequiredField from './RequiredField';
+import Error from './Error';
 
 export default class Registration extends Component {
   static defaultProps = {
@@ -25,7 +26,7 @@ export default class Registration extends Component {
         this.props.history.push('/login');
       })
       .catch((res) => {
-        this.setState({ error: res.error });
+        this.setState({ error: { error: { message: res.error } } });
       });
   };
 
@@ -36,11 +37,7 @@ export default class Registration extends Component {
         <header>
           <h1>Register</h1>
         </header>
-        {error && (
-          <div className="error-display" role="alert">
-            {error}
-          </div>
-        )}
+        {error && <Error error={error} />}
         <form className="custom-form" onSubmit={this.handleSubmit}>
           <div className="custom-form__input-container">
             <label htmlFor="user_name">
