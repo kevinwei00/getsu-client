@@ -11,6 +11,7 @@ import Error from './Error';
 
 export default class Inventory extends Component {
   static contextType = GetsuContext;
+  initialMount = false;
 
   state = {
     hasScrolledOutOfView: false,
@@ -130,7 +131,8 @@ export default class Inventory extends Component {
   };
 
   render() {
-    if (this.context.items.length === 0) {
+    if (this.context.items.length === 0 && !this.initialMount) {
+      this.initialMount = true;
       return <Loading />;
     }
 
