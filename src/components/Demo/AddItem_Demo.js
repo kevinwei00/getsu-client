@@ -4,6 +4,7 @@ import DemoContext from './DemoContext';
 import RequiredField from '../RequiredField';
 import Switch from '../Switch';
 import DocumentUtils from '../../utils/document-utils';
+import TimeUtils from '../../utils/time-utils';
 class AddItem_Demo extends Component {
   static contextType = DemoContext;
 
@@ -56,6 +57,7 @@ class AddItem_Demo extends Component {
       unit_type: this.state.unit_type.value ? this.state.unit_type.value : 'units',
       expiration_date: this.state.expiration_date.value,
     };
+    newItem.expiration_date = TimeUtils.dateToTimestamp(newItem.expiration_date);
     this.handleCreateItem(newItem);
   };
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ProgressBar from '../ProgressBar';
 import '../Item.css';
 
-export default class Item extends Component {
+export default class Item_Demo extends Component {
   render() {
     const { item } = this.props;
     return (
