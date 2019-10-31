@@ -11,14 +11,12 @@ export default class Inventory extends Component {
   static contextType = GetsuContext;
 
   state = {
-    hasServerResponse: false,
     hasScrolledOutOfView: false,
   };
 
   handleGetAllItems = () => {
     ItemsApiService.getAllItemsRequest()
       .then((items) => {
-        this.setState({ hasServerResponse: true });
         this.context.fillItems(items);
       })
       .then(() => {
@@ -26,8 +24,7 @@ export default class Inventory extends Component {
           const el = document.getElementById(this.props.location.state.item_id);
           if (el) {
             el.scrollIntoView();
-          }
-          else {
+          } else {
             DocumentUtils.scrollToTop();
           }
         } else {
@@ -123,12 +120,15 @@ export default class Inventory extends Component {
   };
 
   componentWillUnmount = () => {
-    this.context.clearItems();
     window.removeEventListener('scroll', this.handleScroll);
+    this.context.clearItems();
+    if (this.context.error) {
+      this.context.clearError();
+    }
   };
 
   render() {
-    if (!this.state.hasServerResponse) {
+    if (this.context.items.length === 0) {
       return (
         <div className="loading-display">
           <div className="loading-display__spinner"></div>
@@ -137,9 +137,8 @@ export default class Inventory extends Component {
       );
     }
 
-    const { error } = this.context;
     let content;
-
+    const { error } = this.context;
     if (error) {
       content = (
         <div className="error-display" role="alert">

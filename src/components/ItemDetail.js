@@ -11,7 +11,6 @@ export default class ItemDetail extends Component {
   static contextType = GetsuContext;
 
   state = {
-    hasServerResponse: false,
     toggle_expiration_date: false,
     toggle_edit_max_quantity: false,
     toggle_edit_item_name: false,
@@ -22,7 +21,6 @@ export default class ItemDetail extends Component {
     ItemsApiService.getItemRequest(item_id)
       .then((item) => {
         this.setState({
-          hasServerResponse: true,
           toggle_expiration_date: !!item.expiration_date,
           currentItem: item,
         });
@@ -114,25 +112,21 @@ export default class ItemDetail extends Component {
     }
   };
 
-  handleWindowClose = (e) => {
-    e.preventDefault();
-    return (e.returnValue = this.handleUpdateItem(this.props.match.params.item_id));
-  };
-
   componentDidMount = () => {
-    // window.addEventListener('beforeunload', this.handleWindowClose);
     window.addEventListener('keypress', this.handlePressEnter);
     this.handleGetItem(this.props.match.params.item_id);
     DocumentUtils.scrollToTop();
   };
 
   componentWillUnmount = () => {
-    // window.removeEventListener('beforeunload', this.handleWindowClose);
     window.removeEventListener('keypress', this.handlePressEnter);
+    if (this.context.error) {
+      this.context.clearError();
+    }
   };
 
   render() {
-    if (!this.state.hasServerResponse) {
+    if (!this.state.currentItem) {
       return (
         <div className="loading-display">
           <div className="loading-display__spinner"></div>
@@ -142,37 +136,36 @@ export default class ItemDetail extends Component {
     }
 
     const { error } = this.context;
-    let content;
-    let numericInputStyle = {
-      input: {
-        height: '3rem',
-      },
-      'input:not(.form-control)': {
-        borderRadius: '0.25rem',
-        padding: '0.35rem 0.7rem',
-      },
-      btn: {
-        background: 'rgb(226, 226, 226)',
-        width: '2rem',
-      },
-      'btnUp.mobile': {
-        width: '4rem',
-        borderRadius: '0.25rem',
-      },
-      'btnDown.mobile': {
-        width: '4rem',
-        borderRadius: '0.25rem',
-      },
-    };
-
     if (error) {
-      content = (
+      return (
         <div className="error-display" role="alert">
           {error.message ? 'Internal Server Error' : error.error.message}
         </div>
       );
     } else {
-      content = (
+      const numericInputStyle = {
+        input: {
+          height: '3rem',
+        },
+        'input:not(.form-control)': {
+          borderRadius: '0.25rem',
+          padding: '0.35rem 0.7rem',
+        },
+        btn: {
+          background: 'rgb(226, 226, 226)',
+          width: '2rem',
+        },
+        'btnUp.mobile': {
+          width: '4rem',
+          borderRadius: '0.25rem',
+        },
+        'btnDown.mobile': {
+          width: '4rem',
+          borderRadius: '0.25rem',
+        },
+      };
+
+      return (
         <section className="ItemDetail">
           <header>
             <h1>
@@ -299,6 +292,5 @@ export default class ItemDetail extends Component {
         </section>
       );
     }
-    return <>{content}</>;
   }
 }

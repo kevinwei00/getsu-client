@@ -9,7 +9,6 @@ const ItemsApiService = {
       },
     }).then((res) => {
       if (!res.ok) {
-        // this.context.clearError();
         return res.json().then((e) => Promise.reject(e));
       }
       return res.json();
@@ -22,7 +21,6 @@ const ItemsApiService = {
       },
     }).then((res) => {
       if (!res.ok) {
-        // this.context.clearError();
         return res.json().then((e) => Promise.reject(e));
       }
       return res.json();
@@ -38,7 +36,6 @@ const ItemsApiService = {
       body: JSON.stringify(item),
     }).then((res) => {
       if (!res.ok) {
-        // this.context.clearError();
         return res.json().then((e) => Promise.reject(e));
       }
       return res.json();
@@ -54,7 +51,6 @@ const ItemsApiService = {
       body: JSON.stringify(updateFields),
     }).then((res) => {
       if (!res.ok) {
-        // this.context.clearError();
         return res.json().then((e) => Promise.reject(e));
       }
     });
@@ -67,7 +63,6 @@ const ItemsApiService = {
       },
     }).then((res) => {
       if (!res.ok) {
-        // this.context.clearError();
         return res.json().then((e) => Promise.reject(e));
       }
       return;
