@@ -75,7 +75,6 @@ class AppLanding extends Component {
             <Route path="/demo" component={AppDemo} />
             <Route path="/item" render={() => <Redirect to={'/'} />} />
             <Route path="/add-item" render={() => <Redirect to={'/'} />} />
-            <Route path="/usage-history" render={() => <Redirect to={'/'} />} />
             <Route component={NotFound} />
           </Switch>
         </main>

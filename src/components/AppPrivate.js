@@ -5,7 +5,6 @@ import AppNav from './AppNav';
 import Inventory from './Inventory';
 import ItemDetail from './ItemDetail';
 import AddItem from './AddItem';
-import UsageHistory from './UsageHistory';
 import NotFound from './NotFound';
 
 export default class AppPrivate extends Component {
@@ -22,7 +21,6 @@ export default class AppPrivate extends Component {
             <Route path="/register" render={() => <Redirect to={'/'} />} />
             <Route path="/item/:item_id" component={ItemDetail} />
             <Route path="/add-item" component={AddItem} />
-            <Route path="/usage-history" component={UsageHistory} />
             <Route component={NotFound} />
           </Switch>
         </main>
