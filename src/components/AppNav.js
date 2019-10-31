@@ -40,7 +40,7 @@ class AppNav extends Component {
       content = (
         <div className="AppNav__section">
           <div className="AppNav__item AppNav__username">
-            {TokenService.getCurrentUserName()}
+            <Link to="/">{TokenService.getCurrentUserName()}</Link>
           </div>
           <div className="AppNav__item">
             <i className="fas fa-caret-right"></i>
